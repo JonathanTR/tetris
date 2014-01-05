@@ -1,0 +1,29 @@
+@import url(http://fonts.googleapis.com/css?family=Alfa+Slab+One);
+
+h2.title {
+  display: block;
+  width: 30%;
+  margin: 0 auto;
+  font-family: 'Alfa Slab One', Helvetica, Sans-Serif;
+  text-align: center;
+}
+
+#tetrisBoard {
+  display: block;
+  width: 170px;
+  margin: 0 auto;
+}
+
+.row {
+  margin: 0px;
+  font-size: 0;
+}
+
+.cell {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border: 1px solid #fafafa;
+  border-radius: 35%;
+  background-color: #ecf0f1;
+}
