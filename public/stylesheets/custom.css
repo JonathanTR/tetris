@@ -20,7 +20,7 @@ h2.title {
   font-size: 0;
 }
 
-.cell {
+.tile {
   display: inline-block;
   height: 15px;
   width: 15px;
