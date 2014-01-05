@@ -13,9 +13,12 @@ boardMaker = function(height, width){
 // tiles
 Tile = function(){
   this.active = false; 
-}
+};
 Tile.prototype.activate = function(){
   this.active = true;
+};
+Tile.prototype.deactivate = function(){
+  this.active = false;
 }
 
 // Pieces
