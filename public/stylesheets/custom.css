@@ -6,6 +6,7 @@ h2.title {
   margin: 0 auto;
   font-family: 'Alfa Slab One', Helvetica, Sans-Serif;
   text-align: center;
+  color: #272722;
 }
 
 #tetrisBoard {
@@ -24,6 +25,10 @@ h2.title {
   height: 15px;
   width: 15px;
   border: 1px solid #fafafa;
-  border-radius: 35%;
+  border-radius: 25%;
   background-color: #ecf0f1;
+}
+
+.active {
+  background-color: #e74c3c;
 }

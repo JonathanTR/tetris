@@ -1,6 +1,8 @@
-describe("Tetris board", function(){
-  var tetris = new TetrisGame();
-  
+beforeEach(function(){
+  tetris = new TetrisGame();
+});
+
+describe("TetrisBoard", function(){
   it("should have 20 rows", function(){
     var height = tetris.board.length;
     expect(height).toBe(20);
@@ -10,5 +12,8 @@ describe("Tetris board", function(){
     var width = tetris.board[0].length;
     expect(width).toBe(10);
   });
-});
 
+  it("should be filled with tiles", function(){
+    expect(tetris.board[5][5]).toEqual(jasmine.any(Tile))
+  })
+});
