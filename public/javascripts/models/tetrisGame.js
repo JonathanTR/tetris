@@ -10,7 +10,7 @@ boardMaker = function(height, width){
   return board
 }
 
-// tiles
+// Tiles
 Tile = function(){
   this.active = false; 
 };
@@ -25,15 +25,25 @@ Tile.prototype.deactivate = function(){
 Piece = function(){
   this.origin = [0, 4]
 }
+Piece.prototype.dropOneLevel = function(){
+  this.origin[0] +=1
+}
 
 // Game
 TetrisGame = function(){
   this.board = boardMaker(20, 10)
 }
-
-TetrisGame.prototype.startPiece = function(){
-  var currentPiece = new Piece()
-  var row = currentPiece.origin[0]
-  var col = currentPiece.origin[1]
+TetrisGame.prototype.parsePiece = function(piece){
+  var row = piece.origin[0]
+  var col = piece.origin[1]
   this.board[row][col].activate()
+}
+TetrisGame.prototype.initPiece = function(){
+  var currentPiece = new Piece()
+  this.parsePiece(currentPiece)
+  return currentPiece
+}
+TetrisGame.prototype.dropPiece = function(piece){
+  piece.dropOneLevel()
+  this.parsePiece(piece)
 }

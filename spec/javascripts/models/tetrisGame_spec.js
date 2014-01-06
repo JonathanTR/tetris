@@ -19,13 +19,27 @@ describe("TetrisBoard", function(){
 
   describe("Gameplay:", function(){
     
-    it("should start a new piece at the top", function(){
-      tetris.startPiece()
-      console.log(tetris.board[0][1])
-      expect(tetris.board[0][1].active).toBe(true)
+    it("should initialize new pieces the top", function(){
+      tetris.initPiece()
+      expect(tetris.board[0][4].active).toEqual(true)
     })
 
-    
+    it("should recieve a new piece object from init", function(){
+      expect(tetris.initPiece()).toEqual(jasmine.any(Piece))
+    })
+
+    it("parses piece data for positioning", function(){
+      testPiece = new Piece();
+      tetris.parsePiece(testPiece);
+      expect(tetris.board[0][4].active).toEqual(true)
+    })
+
+    it("can drop a piece", function(){
+      testPiece = tetris.initPiece();
+      tetris.dropPiece(testPiece)
+      expect(tetris.board[0][4].active).toBe(false)
+      expect(tetris.board[1][4].active).toBe(true)
+    })
 
   })
 })

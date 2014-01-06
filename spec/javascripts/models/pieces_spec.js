@@ -1,17 +1,22 @@
+beforeEach(function(){
+  testPiece = new Piece()
+})
+
 describe("Piece", function(){
   it("exists", function(){
-    expect(new Piece()).toBeTruthy()
+    expect(testPiece).toBeTruthy()
   })
 
   describe("position", function(){
     it("initializes with [0,4] as its origin coordinate", function(){
-      pieceTester = new Piece()
-      expect(pieceTester.origin).toBeDefined()
-      expect(pieceTester.origin).toEqual([0,4])
+      expect(testPiece.origin).toBeDefined()
+      expect(testPiece.origin).toEqual([0,4])
     })
-  })
 
-  xit("can be dropped", function(){
-    drop(piece)       
+    it("can drop one level", function(){
+      expect(testPiece.origin).toEqual([0,4])
+      testPiece.dropOneLevel()
+      expect(testPiece.origin).toEqual([1,4])
+    })
   })
 })
