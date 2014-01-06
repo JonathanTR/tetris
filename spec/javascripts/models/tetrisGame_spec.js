@@ -34,7 +34,7 @@ describe("TetrisBoard", function(){
       expect(tetris.board[0][4].active).toEqual(true)
     })
 
-    it("can drop a piece", function(){
+    xit("can drop a piece", function(){
       testPiece = tetris.initPiece();
       tetris.dropPiece(testPiece)
       expect(tetris.board[0][4].active).toBe(false)
