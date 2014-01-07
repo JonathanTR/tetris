@@ -34,13 +34,5 @@ describe("TetrisBoard", function(){
       expect(tetris.board[0][4].active).toEqual(false)
     })
 
-    it("can drop a piece", function(){
-      tetris.activateTilesFor(testPiece)
-      expect(tetris.board[0][4].active).toBe(true)
-      tetris.drop(testPiece)
-      expect(tetris.board[0][4].active).toBe(false)
-      expect(tetris.board[1][4].active).toBe(true)
-    })
-
   })
 })

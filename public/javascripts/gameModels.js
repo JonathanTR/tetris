@@ -49,8 +49,3 @@ Game.prototype.deactivateTilesFor = function(piece){
   var col = piece.origin[1]
   this.board[row][col].deactivate()
 }
-Game.prototype.drop = function(piece){
-  this.deactivateTilesFor(piece)
-  piece.downOne()
-  this.activateTilesFor(piece)
-}
