@@ -43,7 +43,10 @@ Piece.prototype.downOne = function(){
   }
 }
 Piece.prototype.leftOne = function(){
-  this.origin[1] -= 1
+  var length = this.pattern.length
+  for(var coords = 0; coords < length; coords++){
+    this.pattern[coords][1] -= 1
+  }
 }
 Piece.prototype.rightOne = function(){
   this.origin[1] += 1

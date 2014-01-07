@@ -30,16 +30,12 @@ describe("Piece", function(){
 
     it("can move down one row", function(){
       testPiece.downOne()
-      expect(testPiece.pattern[0]).toEqual([1, 4])
-      expect(testPiece.pattern[1]).toEqual([2, 4])
-      expect(testPiece.pattern[2]).toEqual([3, 4])
-      expect(testPiece.pattern[3]).toEqual([4, 4])
+      expect(testPiece.pattern).toEqual([[1, 4],[2, 4],[3, 4],[4, 4]])
     })
 
     it("can move left one column", function(){
-      expect(testPiece.origin).toEqual([0, 4])
       testPiece.leftOne()
-      expect(testPiece.origin).toEqual([0, 3])
+      expect(testPiece.pattern).toEqual([[0, 3],[1, 3],[2, 3],[3, 3]])
     })
     it("can move right one column", function(){
       expect(testPiece.origin).toEqual([0, 4])
