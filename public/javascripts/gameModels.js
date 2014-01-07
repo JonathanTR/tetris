@@ -34,6 +34,7 @@ const TETROMINOES = {
 
 Piece = function(){
   this.origin = [0, 4]
+  this.pattern = []
 }
 Piece.prototype.downOne = function(){
   this.origin[0] += 1

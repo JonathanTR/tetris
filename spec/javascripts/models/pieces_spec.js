@@ -7,6 +7,18 @@ describe("Piece", function(){
     expect(testPiece).toBeTruthy()
   })
 
+  describe("properties", function(){
+    it("has a pattern", function(){
+      console.log(testPiece.pattern)
+      expect(testPiece.pattern).not.toBeFalsy()
+    })
+
+    xit("is initialized with a tetromino shape", function(){
+      tetromino = new Piece(TETROMINOES.I)
+      expect(tetromino.pattern).toEqual([[0, 4],[1, 4],[2, 4],[3, 4]])
+    })
+  })
+
   describe("position", function(){
     it("initializes with [0,4] as its origin coordinate", function(){
       expect(testPiece.origin).toBeDefined()
