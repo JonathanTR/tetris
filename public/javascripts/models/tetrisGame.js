@@ -25,7 +25,7 @@ Tile.prototype.deactivate = function(){
 Piece = function(){
   this.origin = [0, 4]
 }
-Piece.prototype.dropOneLevel = function(){
+Piece.prototype.downOne = function(){
   this.origin[0] +=1
 }
 

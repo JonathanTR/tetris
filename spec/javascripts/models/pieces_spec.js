@@ -13,9 +13,9 @@ describe("Piece", function(){
       expect(testPiece.origin).toEqual([0,4])
     })
 
-    it("can drop one level", function(){
+    it("can move down one row", function(){
       expect(testPiece.origin).toEqual([0,4])
-      testPiece.dropOneLevel()
+      testPiece.downOne()
       expect(testPiece.origin).toEqual([1,4])
     })
   })
