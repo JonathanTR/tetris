@@ -20,26 +20,24 @@ describe("TetrisBoard", function(){
   describe("Gameplay:", function(){
 
     beforeEach(function(){
-      testPiece = new Piece();
+      testPiece = new Piece(TETROMINOES.I);
     })
 
     it("can activate tiles, given a piece", function(){
       tetris.activateTilesFor(testPiece);
       expect(tetris.board[0][4].active).toEqual(true)
+      expect(tetris.board[1][4].active).toEqual(true)
+      expect(tetris.board[2][4].active).toEqual(true)
+      expect(tetris.board[3][4].active).toEqual(true)
     })
 
     it("can deactivate tiles, given a piece", function(){
       tetris.activateTilesFor(testPiece);
       tetris.deactivateTilesFor(testPiece);
       expect(tetris.board[0][4].active).toEqual(false)
-    })
-
-    it("can drop a piece", function(){
-      tetris.activateTilesFor(testPiece)
-      expect(tetris.board[0][4].active).toBe(true)
-      tetris.drop(testPiece)
-      expect(tetris.board[0][4].active).toBe(false)
-      expect(tetris.board[1][4].active).toBe(true)
+      expect(tetris.board[1][4].active).toEqual(false)
+      expect(tetris.board[2][4].active).toEqual(false)
+      expect(tetris.board[3][4].active).toEqual(false)
     })
 
   })
