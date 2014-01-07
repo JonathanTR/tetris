@@ -38,9 +38,8 @@ describe("Piece", function(){
       expect(testPiece.pattern).toEqual([[0, 3],[1, 3],[2, 3],[3, 3]])
     })
     it("can move right one column", function(){
-      expect(testPiece.origin).toEqual([0, 4])
       testPiece.rightOne()
-      expect(testPiece.origin).toEqual([0, 5])
+      expect(testPiece.pattern).toEqual([[0, 5],[1, 5],[2, 5],[3, 5]])
     })
   })
 })
