@@ -37,7 +37,10 @@ Piece = function(tetrominoPattern){
   this.pattern = JSON.parse(JSON.stringify(tetrominoPattern))
 }
 Piece.prototype.downOne = function(){
-  this.origin[0] += 1
+  var length = this.pattern.length
+  for(var coords = 0; coords < length; coords++){
+    this.pattern[coords][0] += 1
+  }
 }
 Piece.prototype.leftOne = function(){
   this.origin[1] -= 1
@@ -52,7 +55,7 @@ Game = function(){
 }
 Game.prototype.activateTilesFor = function(piece){
   var board = this.board
-  for(tile = 0; tile < piece.pattern.length; tile++){
+  for(var tile = 0; tile < piece.pattern.length; tile++){
     var row = piece.pattern[tile][0]
     var col = piece.pattern[tile][1]
     board[row][col].activate()
@@ -60,7 +63,7 @@ Game.prototype.activateTilesFor = function(piece){
 }
 Game.prototype.deactivateTilesFor = function(piece){
   var board = this.board
-  for(tile = 0; tile < piece.pattern.length; tile++){
+  for(var tile = 0; tile < piece.pattern.length; tile++){
     var row = piece.pattern[tile][0]
     var col = piece.pattern[tile][1]
     board[row][col].deactivate()

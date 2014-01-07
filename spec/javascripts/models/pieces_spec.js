@@ -17,7 +17,6 @@ describe("Piece", function(){
     })
 
     it("changes to piece's pattern do not affect TETROMINOES constant", function(){
-      console.log(testPiece.pattern[0][0])
       testPiece.pattern[0][0] += 1
       expect(TETROMINOES.I[0][0]).toEqual(0)
     })
@@ -30,9 +29,11 @@ describe("Piece", function(){
     })
 
     it("can move down one row", function(){
-      expect(testPiece.origin).toEqual([0, 4])
       testPiece.downOne()
-      expect(testPiece.origin).toEqual([1, 4])
+      expect(testPiece.pattern[0]).toEqual([1, 4])
+      expect(testPiece.pattern[1]).toEqual([2, 4])
+      expect(testPiece.pattern[2]).toEqual([3, 4])
+      expect(testPiece.pattern[3]).toEqual([4, 4])
     })
 
     it("can move left one column", function(){
