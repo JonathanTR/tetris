@@ -26,7 +26,13 @@ Piece = function(){
   this.origin = [0, 4]
 }
 Piece.prototype.downOne = function(){
-  this.origin[0] +=1
+  this.origin[0] += 1
+}
+Piece.prototype.leftOne = function(){
+  this.origin[1] -= 1
+}
+Piece.prototype.rightOne = function(){
+  this.origin[1] += 1
 }
 
 // GAME
