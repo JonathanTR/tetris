@@ -9,4 +9,11 @@ describe("Tile", function(){
     testTile.activate()
     expect(testTile.active).toEqual(true)
   })
+  it("can be deactivated", function(){
+    testTile = new Tile()
+    testTile.activate()
+    expect(testTile.active).toEqual(true)
+    testTile.deactivate()
+    expect(testTile.active).toEqual(false)
+  })
 })

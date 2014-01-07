@@ -1,6 +1,5 @@
-window.onload = function(){
-  tetris = new TetrisGame()
-  if (document.getElementById('tetrisBoard')) {
-    render(tetris.board, 'tetrisBoard')
-  }
+// Start the party
+loadUp = function(){
+  tetris = new Game()
+  render(tetris.board, 'tetrisBoard')
 }
