@@ -33,15 +33,10 @@ Piece.prototype.dropOneLevel = function(){
 TetrisGame = function(){
   this.board = boardMaker(20, 10)
 }
-TetrisGame.prototype.parsePiece = function(piece){
+TetrisGame.prototype.activateTilesFor = function(piece){
   var row = piece.origin[0]
   var col = piece.origin[1]
   this.board[row][col].activate()
-}
-TetrisGame.prototype.initPiece = function(){
-  var currentPiece = new Piece()
-  this.parsePiece(currentPiece)
-  return currentPiece
 }
 TetrisGame.prototype.dropPiece = function(piece){
   piece.dropOneLevel()
