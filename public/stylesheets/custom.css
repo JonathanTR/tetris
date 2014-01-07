@@ -2,8 +2,9 @@
 
 h2.title {
   display: block;
-  width: 184px;
+  width: 236px;
   margin: 0 auto;
+  font-size: 2.5em;
   font-family: 'Alfa Slab One', Helvetica, Sans-Serif;
   text-align: center;
   color: #272722;
@@ -11,27 +12,34 @@ h2.title {
 
 #container {
   display: block;
-  width: 184px;
+  width: 248px;
   margin: 0 auto;
   -webkit-transform-origin: 50% 10%;
   -moz-transform-origin: 50% 10%;
   -ms-transform-origin: 50% 10%;
   -o-transform-origin: 50% 10%;
   transform-origin: 50% 10%;
-  -webkit-transform: perspective(350px) rotateX(10deg);
-  -moz-transform: perspective(350px) rotateX(10deg);
-  -ms-transform: perspective(350px) rotateX(10deg);
-  -o-transform: perspective(350px) rotateX(10deg);
-  transform: perspective(350px) rotateX(10deg);
+  -webkit-transform: perspective(1000px) rotateX(45deg);
+  -moz-transform: perspective(1000px) rotateX(45deg);
+  -ms-transform: perspective(1000px) rotateX(45deg);
+  -o-transform: perspective(1000px) rotateX(45deg);
+  transform: perspective(1000px) rotateX(45deg);
 }
 
 #outer-border {
   display: inline-block;
-  padding: 5px;
+  padding: 8px;
   margin: 0 auto;
   background-color: #f39c12;
   border-radius: 15px;
-  border-bottom: 3px solid #e67e22;
+  border-bottom: 3px solid #d35400;
+  background: -moz-linear-gradient(top, #f39c12 0%, #e67e22 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f39c12), color-stop(100%,#e67e22)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f39c12 0%,#e67e22 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f39c12 0%,#e67e22 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f39c12 0%,#e67e22 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #f39c12 0%,#e67e22 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f39c12', endColorstr='#e67e22',GradientType=0 ); /* IE6-9 */
 }
 
 #inner-border {
@@ -47,7 +55,7 @@ h2.title {
 
 #tetrisBoard {
   display: block;
-  width: 164px;
+  width: 220px;
   margin: 0 auto;
 }
 
@@ -58,9 +66,9 @@ h2.title {
 
 .tile {
   display: inline-block;
-  height: 15px;
-  width: 15px;
-  border: 1px solid #fafafa;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #fff;
   border-radius: 25%;
   background-color: #ecf0f1;
 }
