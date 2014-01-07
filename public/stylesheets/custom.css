@@ -2,16 +2,38 @@
 
 h2.title {
   display: block;
-  width: 30%;
+  width: 184px;
   margin: 0 auto;
   font-family: 'Alfa Slab One', Helvetica, Sans-Serif;
   text-align: center;
   color: #272722;
 }
 
+#container {
+  display: block;
+  width: 184px;
+  margin: 0 auto;
+}
+
+#outer-border {
+  display: inline-block;
+  padding: 5px;
+  margin: 0 auto;
+  background-color: #2ecc71;
+  border-radius: 15px;
+}
+
+#inner-border {
+  display: block;
+  padding: 5px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 11px;
+}
+
 #tetrisBoard {
   display: block;
-  width: 170px;
+  width: 164px;
   margin: 0 auto;
 }
 
