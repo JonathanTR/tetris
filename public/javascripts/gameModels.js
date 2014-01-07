@@ -32,6 +32,12 @@ const TETROMINOES = {
   Z: [[0, 5],[0, 6],[1, 4],[1, 5]],
 }
 
+randomTetromino = function(){
+  var keys = Object.keys(TETROMINOES)
+  var index = Math.floor(Math.random() * keys.length)
+  return TETROMINOES[keys[index]]
+}
+
 Piece = function(tetrominoPattern){
   this.origin = [0, 4]
   this.pattern = JSON.parse(JSON.stringify(tetrominoPattern))
