@@ -55,7 +55,8 @@ Game = function(){
 }
 Game.prototype.activateTilesFor = function(piece){
   var board = this.board
-  for(var tile = 0; tile < piece.pattern.length; tile++){
+  var length = this.pattern.length
+  for(var tile = 0; tile < length; tile++){
     var row = piece.pattern[tile][0]
     var col = piece.pattern[tile][1]
     board[row][col].activate()
@@ -63,7 +64,8 @@ Game.prototype.activateTilesFor = function(piece){
 }
 Game.prototype.deactivateTilesFor = function(piece){
   var board = this.board
-  for(var tile = 0; tile < piece.pattern.length; tile++){
+  var length = this.pattern.length
+  for(var tile = 0; tile < length; tile++){
     var row = piece.pattern[tile][0]
     var col = piece.pattern[tile][1]
     board[row][col].deactivate()
