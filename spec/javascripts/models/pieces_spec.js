@@ -9,13 +9,17 @@ describe("Piece", function(){
 
   describe("properties", function(){
     it("has a pattern", function(){
-      console.log(testPiece.pattern)
       expect(testPiece.pattern).not.toBeFalsy()
     })
 
     it("is initialized with a tetromino shape", function(){
-      tetromino = new Piece(TETROMINOES.I)
-      expect(tetromino.pattern).toEqual([[0, 4],[1, 4],[2, 4],[3, 4]])
+      expect(testPiece.pattern).toEqual([[0, 4],[1, 4],[2, 4],[3, 4]])
+    })
+
+    it("changes to piece's pattern do not affect TETROMINOES constant", function(){
+      console.log(testPiece.pattern[0][0])
+      testPiece.pattern[0][0] += 1
+      expect(TETROMINOES.I[0][0]).toEqual(0)
     })
   })
 

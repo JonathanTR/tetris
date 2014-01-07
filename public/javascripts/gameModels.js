@@ -34,7 +34,7 @@ const TETROMINOES = {
 
 Piece = function(tetrominoPattern){
   this.origin = [0, 4]
-  this.pattern = tetrominoPattern.slice()
+  this.pattern = JSON.parse(JSON.stringify(tetrominoPattern))
 }
 Piece.prototype.downOne = function(){
   this.origin[0] += 1
