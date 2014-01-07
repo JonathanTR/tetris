@@ -51,9 +51,12 @@ Game = function(){
   this.board = boardMaker(20, 10)
 }
 Game.prototype.activateTilesFor = function(piece){
-  var row = piece.origin[0]
-  var col = piece.origin[1]
-  this.board[row][col].activate()
+  var board = this.board
+  for(tile = 0; tile < piece.pattern.length; tile++){
+    var row = piece.pattern[tile][0]
+    var col = piece.pattern[tile][1]
+    board[row][col].activate()
+  }
 }
 Game.prototype.deactivateTilesFor = function(piece){
   var row = piece.origin[0]
