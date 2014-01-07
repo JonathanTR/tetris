@@ -59,7 +59,10 @@ Game.prototype.activateTilesFor = function(piece){
   }
 }
 Game.prototype.deactivateTilesFor = function(piece){
-  var row = piece.origin[0]
-  var col = piece.origin[1]
-  this.board[row][col].deactivate()
+  var board = this.board
+  for(tile = 0; tile < piece.pattern.length; tile++){
+    var row = piece.pattern[tile][0]
+    var col = piece.pattern[tile][1]
+    board[row][col].deactivate()
+  }
 }

@@ -35,6 +35,9 @@ describe("TetrisBoard", function(){
       tetris.activateTilesFor(testPiece);
       tetris.deactivateTilesFor(testPiece);
       expect(tetris.board[0][4].active).toEqual(false)
+      expect(tetris.board[1][4].active).toEqual(false)
+      expect(tetris.board[2][4].active).toEqual(false)
+      expect(tetris.board[3][4].active).toEqual(false)
     })
 
   })
