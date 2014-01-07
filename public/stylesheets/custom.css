@@ -13,14 +13,25 @@ h2.title {
   display: block;
   width: 184px;
   margin: 0 auto;
+  -webkit-transform-origin: 50% 10%;
+  -moz-transform-origin: 50% 10%;
+  -ms-transform-origin: 50% 10%;
+  -o-transform-origin: 50% 10%;
+  transform-origin: 50% 10%;
+  -webkit-transform: perspective(350px) rotateX(10deg);
+  -moz-transform: perspective(350px) rotateX(10deg);
+  -ms-transform: perspective(350px) rotateX(10deg);
+  -o-transform: perspective(350px) rotateX(10deg);
+  transform: perspective(350px) rotateX(10deg);
 }
 
 #outer-border {
   display: inline-block;
   padding: 5px;
   margin: 0 auto;
-  background-color: #2ecc71;
+  background-color: #f39c12;
   border-radius: 15px;
+  border-bottom: 3px solid #e67e22;
 }
 
 #inner-border {
@@ -29,6 +40,9 @@ h2.title {
   margin: 0 auto;
   background-color: #fff;
   border-radius: 11px;
+  border-top: 2px solid #e67e22;
+  border-left: 1px solid #e67e22;
+  border-right: 1px solid #e67e22;
 }
 
 #tetrisBoard {
