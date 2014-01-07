@@ -28,7 +28,8 @@ describe("TetrisBoard", function(){
     it("can deactivate tiles, given a piece", function(){
       testPiece = new Piece();
       tetris.activateTilesFor(testPiece);
-      expect(tetris.board[0][4].active).toEqual(true)
+      tetris.deactivateTilesFor(testPiece);
+      expect(tetris.board[0][4].active).toEqual(false)
     })
 
     xit("can drop a piece", function(){

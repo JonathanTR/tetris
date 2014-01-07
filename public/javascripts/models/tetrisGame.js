@@ -38,6 +38,11 @@ TetrisGame.prototype.activateTilesFor = function(piece){
   var col = piece.origin[1]
   this.board[row][col].activate()
 }
+TetrisGame.prototype.deactivateTilesFor = function(piece){
+  var row = piece.origin[0]
+  var col = piece.origin[1]
+  this.board[row][col].deactivate()
+}
 TetrisGame.prototype.dropPiece = function(piece){
   piece.dropOneLevel()
   this.parsePiece(piece)
