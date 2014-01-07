@@ -11,8 +11,9 @@
 #   - dist/**/*.js
 #
 src_files:
-  - public/javascripts/models/**/*.js
-  - public/javascripts/views/**/*.js
+  - public/javascripts/gameModels.js
+  - public/javascripts/gameViews.js
+  - public/javascripts/gameControllers.js
 
 # stylesheets
 #
