@@ -1,5 +1,5 @@
 beforeEach(function(){
-  testPiece = new Piece()
+  testPiece = new Piece(TETROMINOES.I)
 })
 
 describe("Piece", function(){
@@ -13,7 +13,7 @@ describe("Piece", function(){
       expect(testPiece.pattern).not.toBeFalsy()
     })
 
-    xit("is initialized with a tetromino shape", function(){
+    it("is initialized with a tetromino shape", function(){
       tetromino = new Piece(TETROMINOES.I)
       expect(tetromino.pattern).toEqual([[0, 4],[1, 4],[2, 4],[3, 4]])
     })

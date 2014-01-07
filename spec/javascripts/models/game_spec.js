@@ -20,7 +20,7 @@ describe("TetrisBoard", function(){
   describe("Gameplay:", function(){
 
     beforeEach(function(){
-      testPiece = new Piece();
+      testPiece = new Piece(TETROMINOES.I);
     })
 
     it("can activate tiles, given a piece", function(){

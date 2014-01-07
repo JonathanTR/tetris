@@ -32,9 +32,9 @@ const TETROMINOES = {
   Z: [[0, 5],[0, 6],[1, 4],[1, 5]],
 }
 
-Piece = function(){
+Piece = function(tetrominoPattern){
   this.origin = [0, 4]
-  this.pattern = []
+  this.pattern = tetrominoPattern.slice()
 }
 Piece.prototype.downOne = function(){
   this.origin[0] += 1
