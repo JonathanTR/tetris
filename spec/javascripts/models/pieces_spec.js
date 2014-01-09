@@ -72,5 +72,10 @@ describe("Piece", function(){
       testPiece.downOne()
       expect(testPiece.pattern.positions[1]).toEqual([[1,5],[2,5],[3,5],[4,5]])
     })
+
+    it("should adjust all rotations when moving left", function(){
+      testPiece.leftOne()
+      expect(testPiece.pattern.positions[1]).toEqual([[0,4],[1,4],[2,4],[3,4]])
+    })
   })
 })

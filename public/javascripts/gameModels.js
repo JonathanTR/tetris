@@ -48,9 +48,12 @@ Piece.prototype.downOne = function(){
 }
 Piece.prototype.leftOne = function(){
   if(!this.frozen){
-    var length = this.position.length
-    for(var coords = 0; coords < length; coords++){
-      this.position[coords][1] -= 1
+    var outerLength = this.pattern.positions.length
+    var innerLength = this.pattern.positions[0].length
+    for(var rotation = 0; rotation < outerLength; rotation++){
+      for(var coords = 0; coords < outerLength; coords++){
+        this.pattern.positions[rotation][coords][1] -= 1
+      }
     }
   }
 }
