@@ -42,10 +42,19 @@ describe("Piece", function(){
       testPiece.rightOne()
       expect(testPiece.pattern).toEqual([[0, 5],[1, 5],[2, 5],[3, 5]])
     })
+
     it("can be frozen", function(){
       expect(testPiece.frozen).toBe(false)
       testPiece.freeze()
       expect(testPiece.frozen).toBe(true)
+    })
+
+    it("cannot move if it is frozen", function(){
+      testPiece.freeze()
+      testPiece.downOne()
+      testPiece.leftOne()
+      testPiece.rightOne()
+      expect(testPiece.pattern).toEqual(TETROMINOES.I)
     })
   })
 })

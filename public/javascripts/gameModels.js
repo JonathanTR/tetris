@@ -44,21 +44,27 @@ Piece = function(tetrominoPattern){
   this.frozen = false
 }
 Piece.prototype.downOne = function(){
-  var length = this.pattern.length
-  for(var coords = 0; coords < length; coords++){
-    this.pattern[coords][0] += 1
+  if(!this.frozen){
+    var length = this.pattern.length
+    for(var coords = 0; coords < length; coords++){
+      this.pattern[coords][0] += 1
+    }
   }
 }
 Piece.prototype.leftOne = function(){
-  var length = this.pattern.length
-  for(var coords = 0; coords < length; coords++){
-    this.pattern[coords][1] -= 1
+  if(!this.frozen){
+    var length = this.pattern.length
+    for(var coords = 0; coords < length; coords++){
+      this.pattern[coords][1] -= 1
+    }
   }
 }
 Piece.prototype.rightOne = function(){
-  var length = this.pattern.length
-  for(var coords = 0; coords < length; coords++){
-    this.pattern[coords][1] += 1
+  if(!this.frozen){
+    var length = this.pattern.length
+    for(var coords = 0; coords < length; coords++){
+      this.pattern[coords][1] += 1
+    }
   }
 }
 Piece.prototype.freeze = function(){
