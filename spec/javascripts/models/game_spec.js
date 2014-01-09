@@ -40,5 +40,14 @@ describe("TetrisBoard", function(){
       expect(tetris.board[3][4].active).toEqual(false)
     })
 
+    it("should freeze a piece if it hits bottom", function(){
+      for(var row = 2; row < tetris.board.length; row++){
+        testPiece.downOne()
+      }
+      console.log(testPiece.position)
+      tetris.activateTilesFor(testPiece)
+      expect(testPiece.frozen).toBe(true)
+    })
+
   })
 })
