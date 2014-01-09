@@ -25,10 +25,10 @@ describe("TetrisBoard", function(){
 
     it("can activate tiles, given a piece", function(){
       tetris.activateTilesFor(testPiece);
-      expect(tetris.board[0][4].active).toEqual(true)
+      expect(tetris.board[1][3].active).toEqual(true)
       expect(tetris.board[1][4].active).toEqual(true)
-      expect(tetris.board[2][4].active).toEqual(true)
-      expect(tetris.board[3][4].active).toEqual(true)
+      expect(tetris.board[1][5].active).toEqual(true)
+      expect(tetris.board[1][6].active).toEqual(true)
     })
 
     it("can deactivate tiles, given a piece", function(){

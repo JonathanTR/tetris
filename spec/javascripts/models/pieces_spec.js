@@ -13,12 +13,12 @@ describe("Piece", function(){
     })
 
     it("is initialized with a tetromino shape", function(){
-      expect(testPiece.pattern).toEqual([[0, 4],[1, 4],[2, 4],[3, 4]])
+      expect(testPiece.pattern).toEqual([[1, 3],[1, 4],[1, 5],[1, 6]])
     })
 
     it("changes to piece's pattern do not affect TETROMINOES constant", function(){
       testPiece.pattern[0][0] += 1
-      expect(TETROMINOES.I[0][0]).toEqual(0)
+      expect(TETROMINOES.I[0][0]).toEqual(1)
     })
   })
 
@@ -30,17 +30,17 @@ describe("Piece", function(){
 
     it("can move down one row", function(){
       testPiece.downOne()
-      expect(testPiece.pattern).toEqual([[1, 4],[2, 4],[3, 4],[4, 4]])
+      expect(testPiece.pattern).toEqual([[2, 3],[2, 4],[2, 5],[2, 6]])
     })
 
     it("can move left one column", function(){
       testPiece.leftOne()
-      expect(testPiece.pattern).toEqual([[0, 3],[1, 3],[2, 3],[3, 3]])
+      expect(testPiece.pattern).toEqual([[1, 2],[1, 3],[1, 4],[1, 5]])
     })
 
     it("can move right one column", function(){
       testPiece.rightOne()
-      expect(testPiece.pattern).toEqual([[0, 5],[1, 5],[2, 5],[3, 5]])
+      expect(testPiece.pattern).toEqual([[1, 4],[1, 5],[1, 6],[1, 7]])
     })
 
     it("can be frozen", function(){
