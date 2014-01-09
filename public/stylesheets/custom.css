@@ -1,5 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Alfa+Slab+One);
 
+body {
+  background-color: #3498db;
+}
+
 h2.title {
   display: block;
   width: 236px;
@@ -33,12 +37,12 @@ h2.title {
   background-color: #f39c12;
   border-radius: 15px;
   border-bottom: 3px solid #d35400;
-  background: -moz-linear-gradient(top, #f39c12 0%, #e67e22 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f39c12), color-stop(100%,#e67e22)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #f39c12 0%,#e67e22 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #f39c12 0%,#e67e22 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #f39c12 0%,#e67e22 100%); /* IE10+ */
-  background: linear-gradient(to bottom, #f39c12 0%,#e67e22 100%); /* W3C */
+  background: -moz-linear-gradient(top, #f1c40f 0%, #e67e22 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1c40f), color-stop(100%,#e67e22)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f1c40f 0%,#e67e22 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f1c40f 0%,#e67e22 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f1c40f 0%,#e67e22 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #f1c40f 0%,#e67e22 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f39c12', endColorstr='#e67e22',GradientType=0 ); /* IE6-9 */
 }
 
