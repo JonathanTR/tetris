@@ -1,3 +1,5 @@
+// HELPERS
+
 boardMaker = function(height, width){
   var board = [];
   for(var row = 0; row < height; row++){
@@ -8,6 +10,11 @@ boardMaker = function(height, width){
     board.push(currentRow);
   }
   return board
+}
+
+Array.prototype.rotate = function(){
+  front = this.shift()
+  this.push(front)
 }
 
 // TILES
@@ -30,9 +37,12 @@ Piece = function(tetrominoPattern){
 }
 Piece.prototype.downOne = function(){
   if(!this.frozen){
-    var length = this.position.length
-    for(var coords = 0; coords < length; coords++){
-      this.position[coords][0] += 1
+    var outerLength = this.pattern.positions.length
+    var innerLength = this.pattern.positions[0].length
+    for(var rotation = 0; rotation < outerLength; rotation++){
+      for(var coords = 0; coords < outerLength; coords++){
+        this.pattern.positions[rotation][coords][0] += 1
+      }
     }
   }
 }
@@ -56,7 +66,8 @@ Piece.prototype.freeze = function(){
   this.frozen = true
 }
 Piece.prototype.rotate = function(){
-  this.position = [[0, 5],[1, 5],[2, 5],[3, 5]]
+  this.pattern.positions.rotate()
+  this.position = this.pattern.positions[0]
 }
 
 // GAME

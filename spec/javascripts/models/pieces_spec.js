@@ -60,9 +60,17 @@ describe("Piece", function(){
   })
 
   describe("rotation", function(){
-    xit("rotates 90 degrees", function(){
-      testPiece.rotate()
-      expect(testPiece.pattern).toEqual(TETROMINOES.I[1])
+    it("rotates 90 degrees", function(){
+      newTestPiece = new Piece(TETROMINOES.J)
+      newTestPiece.rotate()
+      expect(newTestPiece.position).toEqual(TETROMINOES.J.positions[1])
+      newTestPiece.rotate()
+      expect(newTestPiece.position).toEqual(TETROMINOES.J.positions[2])
+    })
+
+    it("should adjust all rotations when moving down", function(){
+      testPiece.downOne()
+      expect(testPiece.pattern.positions[1]).toEqual([[1,5],[2,5],[3,5],[4,5]])
     })
   })
 })
