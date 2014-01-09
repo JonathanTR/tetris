@@ -1,6 +1,6 @@
 beforeEach(function(){
   testPiece = new Piece(TETROMINOES.I)
-  currentPosition = testPiece.pattern
+  currentPosition = testPiece.position
 })
 
 describe("Piece", function(){
@@ -13,13 +13,13 @@ describe("Piece", function(){
       expect(currentPosition).not.toBeFalsy()
     })
 
-    it("is initialized with a tetromino shape", function(){
+    it("is initialized with the first position of a tetromino shape", function(){
       expect(currentPosition).toEqual([[1, 3],[1, 4],[1, 5],[1, 6]])
     })
 
     it("changes to piece's pattern do not affect TETROMINOES constant", function(){
       currentPosition[0][0] += 1
-      expect(TETROMINOES.I[0][0]).toEqual(1)
+      expect(TETROMINOES.I.positions[0][0][0]).toEqual(1)
     })
   })
 
@@ -55,14 +55,14 @@ describe("Piece", function(){
       testPiece.downOne()
       testPiece.leftOne()
       testPiece.rightOne()
-      expect(currentPosition).toEqual(TETROMINOES.I)
+      expect(currentPosition).toEqual(TETROMINOES.I.positions[0])
     })
   })
 
   describe("rotation", function(){
     xit("rotates 90 degrees", function(){
       testPiece.rotate()
-      expect(currentPosition).toEqual([[0, 5],[1, 5],[2, 5],[3, 5]])
+      expect(testPiece.pattern).toEqual(TETROMINOES.I[1])
     })
   })
 })

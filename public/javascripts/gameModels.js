@@ -21,54 +21,42 @@ Tile.prototype.deactivate = function(){
   this.active = false;
 }
 
-// PIECES
-const TETROMINOES = {
-  I: [[1,3],[1,4],[1,5],[1,6]],
-  J: [[0,3],[1,3],[1,4],[1,5]],
-  L: [[1,3],[1,4],[1,5],[0,5]],
-  O: [[0,4],[0,5],[1,4],[1,5]],
-  S: [[0,4],[0,5],[1,3],[1,4]],
-  T: [[0,4],[1,3],[1,4],[1,5]],
-  Z: [[0,3],[0,4],[1,4],[1,5]],
-}
-
-randomTetromino = function(){
-  var keys = Object.keys(TETROMINOES)
-  var index = Math.floor(Math.random() * keys.length)
-  return TETROMINOES[keys[index]]
-}
-
+// PIECE
 Piece = function(tetrominoPattern){
   this.origin = [0, 4]
   this.pattern = JSON.parse(JSON.stringify(tetrominoPattern))
+  this.position = this.pattern.positions[0]
   this.frozen = false
 }
 Piece.prototype.downOne = function(){
   if(!this.frozen){
-    var length = this.pattern.length
+    var length = this.position.length
     for(var coords = 0; coords < length; coords++){
-      this.pattern[coords][0] += 1
+      this.position[coords][0] += 1
     }
   }
 }
 Piece.prototype.leftOne = function(){
   if(!this.frozen){
-    var length = this.pattern.length
+    var length = this.position.length
     for(var coords = 0; coords < length; coords++){
-      this.pattern[coords][1] -= 1
+      this.position[coords][1] -= 1
     }
   }
 }
 Piece.prototype.rightOne = function(){
   if(!this.frozen){
-    var length = this.pattern.length
+    var length = this.position.length
     for(var coords = 0; coords < length; coords++){
-      this.pattern[coords][1] += 1
+      this.position[coords][1] += 1
     }
   }
 }
 Piece.prototype.freeze = function(){
   this.frozen = true
+}
+Piece.prototype.rotate = function(){
+  this.position = [[0, 5],[1, 5],[2, 5],[3, 5]]
 }
 
 // GAME
@@ -77,19 +65,19 @@ Game = function(){
 }
 Game.prototype.activateTilesFor = function(piece){
   var board = this.board
-  var length = piece.pattern.length
+  var length = piece.position.length
   for(var tile = 0; tile < length; tile++){
-    var row = piece.pattern[tile][0]
-    var col = piece.pattern[tile][1]
+    var row = piece.position[tile][0]
+    var col = piece.position[tile][1]
     board[row][col].activate()
   }
 }
 Game.prototype.deactivateTilesFor = function(piece){
   var board = this.board
-  var length = piece.pattern.length
+  var length = piece.position.length
   for(var tile = 0; tile < length; tile++){
-    var row = piece.pattern[tile][0]
-    var col = piece.pattern[tile][1]
+    var row = piece.position[tile][0]
+    var col = piece.position[tile][1]
     board[row][col].deactivate()
   }
 }
