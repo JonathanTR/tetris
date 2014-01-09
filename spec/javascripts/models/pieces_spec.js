@@ -37,9 +37,15 @@ describe("Piece", function(){
       testPiece.leftOne()
       expect(testPiece.pattern).toEqual([[0, 3],[1, 3],[2, 3],[3, 3]])
     })
+
     it("can move right one column", function(){
       testPiece.rightOne()
       expect(testPiece.pattern).toEqual([[0, 5],[1, 5],[2, 5],[3, 5]])
+    })
+    it("can be frozen", function(){
+      expect(testPiece.frozen).toBe(false)
+      testPiece.freeze()
+      expect(testPiece.frozen).toBe(true)
     })
   })
 })

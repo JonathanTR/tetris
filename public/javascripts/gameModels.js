@@ -23,12 +23,12 @@ Tile.prototype.deactivate = function(){
 
 // PIECES
 const TETROMINOES = {
-  I: [[0, 3],[0, 4],[0, 5],[0, 6]],
-  J: [[0, 3],[1, 3],[1, 4],[1, 5]],
-  L: [[1, 3],[0, 3],[0, 4],[0, 5]],
+  I: [[0, 4],[1, 4],[2, 4],[3, 4]],
+  J: [[0, 5],[1, 5],[2, 5],[2, 4]],
+  L: [[0, 4],[1, 4],[2, 4],[2, 5]],
   O: [[0, 4],[0, 5],[1, 4],[1, 5]],
   S: [[0, 4],[0, 5],[1, 3],[1, 4]],
-  T: [[1, 4],[0, 3],[0, 4],[0, 5]],
+  T: [[1, 3],[1, 4],[1, 5],[0, 4]],
   Z: [[0, 3],[0, 4],[1, 4],[1, 5]],
 }
 
@@ -41,6 +41,7 @@ randomTetromino = function(){
 Piece = function(tetrominoPattern){
   this.origin = [0, 4]
   this.pattern = JSON.parse(JSON.stringify(tetrominoPattern))
+  this.frozen = false
 }
 Piece.prototype.downOne = function(){
   var length = this.pattern.length
@@ -59,6 +60,9 @@ Piece.prototype.rightOne = function(){
   for(var coords = 0; coords < length; coords++){
     this.pattern[coords][1] += 1
   }
+}
+Piece.prototype.freeze = function(){
+  this.frozen = true
 }
 
 // GAME
