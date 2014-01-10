@@ -63,6 +63,35 @@ h2.title {
   margin: 0 auto;
 }
 
+#controls {
+  display: block;
+  width: 20%;
+  margin: 1em auto;
+  text-align: center;
+}
+
+button {
+  font-size: 1.25em;
+  border-radius: 5px;
+  margin: 5%;
+}
+
+#start {
+  border: 1px solid #19703E;
+  border-bottom: 3px solid #19703E;
+}
+#start:hover {
+  background-color: #2EFF71;
+}
+
+#pause {
+  border: 1px solid #691F17;
+  border-bottom: 3px solid #691F17;
+}
+#pause:hover {
+  background-color: #FF4C3C;
+}
+
 .row {
   margin: 0px;
   font-size: 0;
@@ -77,10 +106,10 @@ h2.title {
   background-color: #ecf0f1;
 }
 
+/* Tile Colors */
 .active {
   background-color: #e74c3c;
 }
-
 .red {
   background-color: #c0392b;
 }
