@@ -35,6 +35,7 @@ Piece = function(tetrominoPattern){
   this.position = this.pattern.positions[0]
   this.frozen = false
   this.leftFrozen = false
+  this.rightFrozen = false
 }
 Piece.prototype.downOne = function(){
   if(!this.frozen){
@@ -78,6 +79,9 @@ Piece.prototype.freeze = function(){
 }
 Piece.prototype.leftFreeze = function(){
   this.leftFrozen = true
+}
+Piece.prototype.rightFreeze = function(){
+  this.rightFrozen = true
 }
 
 // GAME

@@ -63,6 +63,12 @@ describe("Piece", function(){
       testPiece.leftFreeze()
       expect(testPiece.leftFrozen).toBe(true)
     })
+
+    it("can be rightFrozen", function(){
+      expect(testPiece.rightFrozen).toBe(false)
+      testPiece.rightFreeze()
+      expect(testPiece.rightFrozen).toBe(true)
+    })
     
     it("cannot move left if leftFrozen", function(){
       testPiece.leftFreeze()
