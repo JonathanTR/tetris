@@ -1,5 +1,6 @@
 beforeEach(function(){
   testPiece = new Piece(TETROMINOES.I)
+  currentPosition = testPiece.position
 })
 
 describe("Piece", function(){
@@ -9,16 +10,16 @@ describe("Piece", function(){
 
   describe("properties", function(){
     it("has a pattern", function(){
-      expect(testPiece.pattern).not.toBeFalsy()
+      expect(currentPosition).not.toBeFalsy()
     })
 
-    it("is initialized with a tetromino shape", function(){
-      expect(testPiece.pattern).toEqual([[0, 4],[1, 4],[2, 4],[3, 4]])
+    it("is initialized with the first position of a tetromino shape", function(){
+      expect(currentPosition).toEqual([[1, 3],[1, 4],[1, 5],[1, 6]])
     })
 
     it("changes to piece's pattern do not affect TETROMINOES constant", function(){
-      testPiece.pattern[0][0] += 1
-      expect(TETROMINOES.I[0][0]).toEqual(0)
+      currentPosition[0][0] += 1
+      expect(TETROMINOES.I.positions[0][0][0]).toEqual(1)
     })
   })
 
@@ -30,16 +31,56 @@ describe("Piece", function(){
 
     it("can move down one row", function(){
       testPiece.downOne()
-      expect(testPiece.pattern).toEqual([[1, 4],[2, 4],[3, 4],[4, 4]])
+      expect(currentPosition).toEqual([[2, 3],[2, 4],[2, 5],[2, 6]])
     })
 
     it("can move left one column", function(){
       testPiece.leftOne()
-      expect(testPiece.pattern).toEqual([[0, 3],[1, 3],[2, 3],[3, 3]])
+      expect(currentPosition).toEqual([[1, 2],[1, 3],[1, 4],[1, 5]])
     })
+
     it("can move right one column", function(){
       testPiece.rightOne()
-      expect(testPiece.pattern).toEqual([[0, 5],[1, 5],[2, 5],[3, 5]])
+      expect(currentPosition).toEqual([[1, 4],[1, 5],[1, 6],[1, 7]])
+    })
+
+    it("can be frozen", function(){
+      expect(testPiece.frozen).toBe(false)
+      testPiece.freeze()
+      expect(testPiece.frozen).toBe(true)
+    })
+
+    it("cannot move if it is frozen", function(){
+      testPiece.freeze()
+      testPiece.downOne()
+      testPiece.leftOne()
+      testPiece.rightOne()
+      expect(currentPosition).toEqual(TETROMINOES.I.positions[0])
+    })
+  })
+
+  describe("rotation", function(){
+    it("rotates 90 degrees", function(){
+      newTestPiece = new Piece(TETROMINOES.J)
+      newTestPiece.rotate()
+      expect(newTestPiece.position).toEqual(TETROMINOES.J.positions[1])
+      newTestPiece.rotate()
+      expect(newTestPiece.position).toEqual(TETROMINOES.J.positions[2])
+    })
+
+    it("should adjust all rotations when moving down", function(){
+      testPiece.downOne()
+      expect(testPiece.pattern.positions[1]).toEqual([[1,5],[2,5],[3,5],[4,5]])
+    })
+
+    it("should adjust all rotations when moving left", function(){
+      testPiece.leftOne()
+      expect(testPiece.pattern.positions[1]).toEqual([[0,4],[1,4],[2,4],[3,4]])
+    })
+
+    it("should adjust all rotations when moving right", function(){
+      testPiece.rightOne()
+      expect(testPiece.pattern.positions[1]).toEqual([[0,6],[1,6],[2,6],[3,6]])
     })
   })
 })

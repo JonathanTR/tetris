@@ -1,3 +1,5 @@
+// HELPERS
+
 boardMaker = function(height, width){
   var board = [];
   for(var row = 0; row < height; row++){
@@ -8,6 +10,11 @@ boardMaker = function(height, width){
     board.push(currentRow);
   }
   return board
+}
+
+Array.prototype.rotate = function(){
+  front = this.shift()
+  this.push(front)
 }
 
 // TILES
@@ -21,44 +28,52 @@ Tile.prototype.deactivate = function(){
   this.active = false;
 }
 
-// PIECES
-const TETROMINOES = {
-  I: [[0, 4],[1, 4],[2, 4],[3, 4]],
-  J: [[0, 5],[1, 5],[2, 5],[2, 4]],
-  L: [[0, 4],[1, 4],[2, 4],[2, 5]],
-  O: [[0, 4],[0, 5],[1, 4],[1, 5]],
-  S: [[0, 4],[0, 5],[1, 3],[1, 4]],
-  T: [[1, 3],[1, 4],[1, 5],[0, 4]],
-  Z: [[0, 3],[0, 4],[1, 4],[1, 5]],
-}
-
-randomTetromino = function(){
-  var keys = Object.keys(TETROMINOES)
-  var index = Math.floor(Math.random() * keys.length)
-  return TETROMINOES[keys[index]]
-}
-
+// PIECE
 Piece = function(tetrominoPattern){
   this.origin = [0, 4]
   this.pattern = JSON.parse(JSON.stringify(tetrominoPattern))
+  this.position = this.pattern.positions[0]
+  this.frozen = false
 }
 Piece.prototype.downOne = function(){
-  var length = this.pattern.length
-  for(var coords = 0; coords < length; coords++){
-    this.pattern[coords][0] += 1
+  if(!this.frozen){
+    var outerLength = this.pattern.positions.length
+    var innerLength = this.pattern.positions[0].length
+    for(var rotation = 0; rotation < outerLength; rotation++){
+      for(var coords = 0; coords < outerLength; coords++){
+        this.pattern.positions[rotation][coords][0] += 1
+      }
+    }
   }
 }
 Piece.prototype.leftOne = function(){
-  var length = this.pattern.length
-  for(var coords = 0; coords < length; coords++){
-    this.pattern[coords][1] -= 1
+  if(!this.frozen){
+    var outerLength = this.pattern.positions.length
+    var innerLength = this.pattern.positions[0].length
+    for(var rotation = 0; rotation < outerLength; rotation++){
+      for(var coords = 0; coords < outerLength; coords++){
+        this.pattern.positions[rotation][coords][1] -= 1
+      }
+    }
   }
 }
 Piece.prototype.rightOne = function(){
-  var length = this.pattern.length
-  for(var coords = 0; coords < length; coords++){
-    this.pattern[coords][1] += 1
+  if(!this.frozen){
+    var outerLength = this.pattern.positions.length
+    var innerLength = this.pattern.positions[0].length
+    for(var rotation = 0; rotation < outerLength; rotation++){
+      for(var coords = 0; coords < outerLength; coords++){
+        this.pattern.positions[rotation][coords][1] += 1
+      }
+    }
   }
+}
+Piece.prototype.freeze = function(){
+  this.frozen = true
+}
+Piece.prototype.rotate = function(){
+  this.pattern.positions.rotate()
+  this.position = this.pattern.positions[0]
 }
 
 // GAME
@@ -67,19 +82,22 @@ Game = function(){
 }
 Game.prototype.activateTilesFor = function(piece){
   var board = this.board
-  var length = piece.pattern.length
+  var length = piece.position.length
   for(var tile = 0; tile < length; tile++){
-    var row = piece.pattern[tile][0]
-    var col = piece.pattern[tile][1]
+    var row = piece.position[tile][0]
+    var col = piece.position[tile][1]
+    if(row + 1 >= board.length){
+      piece.freeze()
+    }
     board[row][col].activate()
   }
 }
 Game.prototype.deactivateTilesFor = function(piece){
   var board = this.board
-  var length = piece.pattern.length
+  var length = piece.position.length
   for(var tile = 0; tile < length; tile++){
-    var row = piece.pattern[tile][0]
-    var col = piece.pattern[tile][1]
+    var row = piece.position[tile][0]
+    var col = piece.position[tile][1]
     board[row][col].deactivate()
   }
 }

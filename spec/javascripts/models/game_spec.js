@@ -25,10 +25,10 @@ describe("TetrisBoard", function(){
 
     it("can activate tiles, given a piece", function(){
       tetris.activateTilesFor(testPiece);
-      expect(tetris.board[0][4].active).toEqual(true)
+      expect(tetris.board[1][3].active).toEqual(true)
       expect(tetris.board[1][4].active).toEqual(true)
-      expect(tetris.board[2][4].active).toEqual(true)
-      expect(tetris.board[3][4].active).toEqual(true)
+      expect(tetris.board[1][5].active).toEqual(true)
+      expect(tetris.board[1][6].active).toEqual(true)
     })
 
     it("can deactivate tiles, given a piece", function(){
@@ -38,6 +38,15 @@ describe("TetrisBoard", function(){
       expect(tetris.board[1][4].active).toEqual(false)
       expect(tetris.board[2][4].active).toEqual(false)
       expect(tetris.board[3][4].active).toEqual(false)
+    })
+
+    it("should freeze a piece if it hits bottom", function(){
+      for(var row = 2; row < tetris.board.length; row++){
+        testPiece.downOne()
+      }
+      console.log(testPiece.position)
+      tetris.activateTilesFor(testPiece)
+      expect(testPiece.frozen).toBe(true)
     })
 
   })
