@@ -13,13 +13,13 @@ boardMaker = function(height, width){
 }
 
 Array.prototype.rotate = function(){
-  front = this.shift()
+  var front = this.shift()
   this.push(front)
 }
 
-Array.prototype.containsCoords = function(coords){
+Array.prototype.containsCoordsTuple = function(coordsTuple){
   for(var i = 0; i < this.length; i++){
-    if(this[i][0] == coords[0] && this[i][1] == coords[1] ){ return(true) }
+    if(this[i][0] == coordsTuple[0] && this[i][1] == coordsTuple[1] ){ return(true) }
   }
   return(false)
 }
