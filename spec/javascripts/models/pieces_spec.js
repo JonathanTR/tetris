@@ -75,6 +75,12 @@ describe("Piece", function(){
       testPiece.leftOne()
       expect(testPiece.position).toEqual(TETROMINOES.I.positions[0])
     })
+
+    it("cannot move right if rightFrozen", function(){
+      testPiece.rightFreeze()
+      testPiece.rightOne()
+      expect(testPiece.position).toEqual(TETROMINOES.I.positions[0])
+    })
   })
 
   describe("rotation", function(){

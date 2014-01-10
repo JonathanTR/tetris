@@ -60,7 +60,7 @@ Piece.prototype.leftOne = function(){
   }
 }
 Piece.prototype.rightOne = function(){
-  if(!this.frozen){
+  if(!this.frozen && !this.rightFrozen){
     var outerLength = this.pattern.positions.length
     var innerLength = this.pattern.positions[0].length
     for(var rotation = 0; rotation < outerLength; rotation++){
