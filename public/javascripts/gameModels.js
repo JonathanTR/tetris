@@ -48,7 +48,7 @@ Piece.prototype.downOne = function(){
   }
 }
 Piece.prototype.leftOne = function(){
-  if(!this.frozen){
+  if(!this.frozen && !this.leftFrozen){
     var outerLength = this.pattern.positions.length
     var innerLength = this.pattern.positions[0].length
     for(var rotation = 0; rotation < outerLength; rotation++){

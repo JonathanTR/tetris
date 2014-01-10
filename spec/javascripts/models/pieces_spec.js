@@ -64,7 +64,7 @@ describe("Piece", function(){
       expect(testPiece.leftFrozen).toBe(true)
     })
     
-    xit("cannot move left if leftFrozen", function(){
+    it("cannot move left if leftFrozen", function(){
       testPiece.leftFreeze()
       testPiece.leftOne()
       expect(testPiece.position).toEqual(TETROMINOES.I.positions[0])
