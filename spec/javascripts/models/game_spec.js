@@ -55,5 +55,13 @@ describe("TetrisBoard", function(){
       tetris.activateTilesFor(testPiece)
       expect(testPiece.leftFrozen).toBe(true)
     })
+
+    it("should rightFreeze a piece if it hits the right wall", function(){
+      for(var col = 0; col < 3; col++){
+        testPiece.rightOne()
+      }
+      tetris.activateTilesFor(testPiece)
+      expect(testPiece.rightFrozen).toBe(true)
+    })
   })
 })
