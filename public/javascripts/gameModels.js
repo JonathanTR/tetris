@@ -106,13 +106,13 @@ Game.prototype.activateTilesFor = function(piece){
   for(var tile = 0; tile < length; tile++){
     var row = piece.position[tile][0]
     var col = piece.position[tile][1]
-    if(row + 1 >= board.length || board[row + 1][col].active && !piece.position.containsCoords([row +1, col])){
+    if(row + 1 >= board.length || board[row + 1][col].active && !piece.position.containsCoordsTuple([row +1, col])){
       piece.freeze()
     }
-    if(col - 1 < 0 || board[row][col - 1].active && !piece.position.containsCoords([row, col - 1])){
+    if(col - 1 < 0 || board[row][col - 1].active && !piece.position.containsCoordsTuple([row, col - 1])){
       piece.leftFreeze()
     }
-    if(col + 1 > 9 || board[row][col + 1].active && !piece.position.containsCoords([row, col + 1])){
+    if(col + 1 > 9 || board[row][col + 1].active && !piece.position.containsCoordsTuple([row, col + 1])){
       piece.rightFreeze()
     }
     board[row][col].activate()
