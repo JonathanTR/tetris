@@ -107,7 +107,7 @@ Game.prototype.activateTilesFor = function(piece){
     if(col - 1 < 0 || board[row][col - 1].active && !piece.position.containsCoords([row, col - 1])){
       piece.leftFreeze()
     }
-    if(col + 1 > 9 || board[row][col + 1].active){
+    if(col + 1 > 9 || board[row][col + 1].active && !piece.position.containsCoords([row, col + 1])){
       piece.rightFreeze()
     }
     board[row][col].activate()
