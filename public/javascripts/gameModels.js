@@ -34,6 +34,7 @@ Piece = function(tetrominoPattern){
   this.pattern = JSON.parse(JSON.stringify(tetrominoPattern))
   this.position = this.pattern.positions[0]
   this.frozen = false
+  this.leftFrozen = false
 }
 Piece.prototype.downOne = function(){
   if(!this.frozen){
@@ -68,12 +69,15 @@ Piece.prototype.rightOne = function(){
     }
   }
 }
-Piece.prototype.freeze = function(){
-  this.frozen = true
-}
 Piece.prototype.rotate = function(){
   this.pattern.positions.rotate()
   this.position = this.pattern.positions[0]
+}
+Piece.prototype.freeze = function(){
+  this.frozen = true
+}
+Piece.prototype.leftFreeze = function(){
+  this.leftFrozen = true
 }
 
 // GAME
