@@ -78,8 +78,7 @@ run = function(){
       }
       if(gameHasBeenLost()){
         pause()
-        alert('You lose')
-        deactivateBoard()
+        console.log('You lose')
       }
     }
   }
