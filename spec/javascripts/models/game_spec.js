@@ -64,11 +64,18 @@ describe("TetrisBoard", function(){
       expect(testPiece.rightFrozen).toBe(true)
     })
 
-    it("should freeze a piece if it lands on another", function(){
+    it("should freeze a piece if it lands on an active tile", function(){
       tetris.board[3][3].activate()
       testPiece.downOne()
       tetris.activateTilesFor(testPiece)
       expect(testPiece.frozen).toBe(true)
+    })
+
+    it("should leftFreeze a piece if it touches an active tile on the side", function(){
+      tetris.board[1][2].activate()
+      tetris.activateTilesFor(testPiece)
+      testPiece.leftOne()
+      expect(testPiece.position).toEqual(TETROMINOES.I.positions[0])
     })
 
     it("should not freeze having active tiles as part of its shape", function(){
