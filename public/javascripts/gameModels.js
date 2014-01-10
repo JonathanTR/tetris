@@ -97,6 +97,9 @@ Game.prototype.activateTilesFor = function(piece){
     if(row + 1 >= board.length){
       piece.freeze()
     }
+    if(col -1 < 0){
+      piece.leftFreeze()
+    }
     board[row][col].activate()
   }
 }

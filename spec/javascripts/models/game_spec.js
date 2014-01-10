@@ -44,10 +44,16 @@ describe("TetrisBoard", function(){
       for(var row = 2; row < tetris.board.length; row++){
         testPiece.downOne()
       }
-      console.log(testPiece.position)
       tetris.activateTilesFor(testPiece)
       expect(testPiece.frozen).toBe(true)
     })
 
+    it("should leftFreeze a piece if it hits the left wall", function(){
+      for(var col = 0; col < 3; col++){
+        testPiece.leftOne()
+      }
+      tetris.activateTilesFor(testPiece)
+      expect(testPiece.leftFrozen).toBe(true)
+    })
   })
 })
