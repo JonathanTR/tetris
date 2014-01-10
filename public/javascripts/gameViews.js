@@ -12,10 +12,11 @@ render = function(board, handle){
     for(var x = 0; x < modelBoard[y].length; x++){
       var modeltile = modelBoard[y][x]
       var tile = document.createElement('div')
+      console.log(modeltile.hue)
       if(!modeltile.active){
         tile.setAttribute('class', 'tile')
       }else{
-        tile.setAttribute('class', 'tile active')
+        tile.setAttribute('class', 'tile active'+' '+modeltile.hue)
       }
       row.appendChild(tile)
     }

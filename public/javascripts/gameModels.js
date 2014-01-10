@@ -26,13 +26,16 @@ Array.prototype.containsCoordsTuple = function(coordsTuple){
 
 // TILES
 Tile = function(){
-  this.active = false; 
+  this.active = false;
+  this.hue
 };
-Tile.prototype.activate = function(){
+Tile.prototype.activate = function(hue){
   this.active = true;
+  this.hue = hue
 };
 Tile.prototype.deactivate = function(){
   this.active = false;
+  this.hue = undefined
 }
 
 // PIECE
@@ -47,6 +50,7 @@ Piece = function(tetrominoPattern){
   this.origin = [0, 4]
   this.pattern = JSON.parse(JSON.stringify(tetrominoPattern))
   this.position = this.pattern.positions[0]
+  this.hue = this.pattern.hue
   this.frozen = false
   this.leftFrozen = false
   this.rightFrozen = false
@@ -132,7 +136,7 @@ Game.prototype.activateTilesFor = function(piece){
     if(col + 1 > 9 || board[row][col + 1].active && !piece.position.containsCoordsTuple([row, col + 1])){
       piece.rightFreeze()
     }
-    board[row][col].activate()
+    board[row][col].activate(piece.hue)
   }
 }
 Game.prototype.deactivateTilesFor = function(piece){

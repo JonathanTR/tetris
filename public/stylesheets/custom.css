@@ -80,3 +80,25 @@ h2.title {
 .active {
   background-color: #e74c3c;
 }
+
+.red {
+  background-color: #c0392b;
+}
+.blue {
+  background-color: #3498db;
+}
+.orange {
+  background-color: #d35400;
+}
+.yellow {
+  background-color: #f1c40f;
+}
+.purple {
+  background-color: #9b59b6;
+}
+.green {
+  background-color: #27ae60;
+}
+.dark-blue {
+  background-color: #2c3e50;
+}
