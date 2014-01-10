@@ -139,6 +139,16 @@ describe("TetrisBoard", function(){
           tetris.activateTilesFor(testPiece)
           expect(testPiece.rightFrozen).toBe(false)
         })
+
+        it("should not allow a piece to rotate over the left side", function(){
+          testPiece.rotate()
+          for(var col = 0; col < 4; col++){
+            testPiece.leftOne()
+          }
+          control = testPiece.capturePosition()
+          testPiece.rotate()
+          expect(testPiece.position).toEqual(control)
+        })
       })
     })
   })

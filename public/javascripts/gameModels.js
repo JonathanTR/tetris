@@ -78,6 +78,13 @@ Piece.prototype.rightOne = function(){
   }
 }
 Piece.prototype.rotate = function(){
+  var nextRotation = this.pattern.positions[1]
+  var length = nextRotation.length
+  for(var coords = 0; coords < length; coords++){
+    if(nextRotation[coords][1] < 0){
+      return
+    }
+  }
   this.pattern.positions.rotate()
   this.position = this.pattern.positions[0]
 }
