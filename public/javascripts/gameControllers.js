@@ -3,6 +3,7 @@ run = function(){
   var board = tetris.board
   var currentPiece
   
+  // Start the game
   renderBoard = function(){
     render(tetris.board, 'tetrisBoard')
   }
@@ -11,7 +12,22 @@ run = function(){
     tetris.activateTilesFor(currentPiece)
     renderBoard()
   }
-  
+
+  startGame = function(){
+    initPiece()
+    dropPiece()
+  }
+
+  play = function(){
+    if(typeof(currentPiece) != "undefined"){
+      dropPiece()
+    }else{
+      startGame()
+    }
+  }
+
+
+  // Stop the game
   deactivateBoard = function(){
     for(var row = 0; row < board.length; row++){
       for(var tile = 0; tile < board[row].length; tile++){
@@ -36,6 +52,13 @@ run = function(){
     }
   }
 
+  pause = function(){
+    if(typeof(gameTime) != "undefined"){ 
+      clearInterval(gameTime)
+    }
+  }
+
+  // During the game
   boardSweep = function(){
     for(var row = 0; row < board.length; row++){
       var activeTiles = 0
@@ -55,7 +78,8 @@ run = function(){
       }
       if(gameHasBeenLost()){
         pause()
-        window.alert('You lose')
+        alert('You lose')
+        deactivateBoard()
       }
     }
   }
@@ -73,30 +97,11 @@ run = function(){
     }, 500)
   }
 
-  pause = function(){
-    if(typeof(gameTime) != "undefined"){ 
-      clearInterval(gameTime)
-    }
-  }
-
-  play = function(){
-    if(typeof(currentPiece) != "undefined"){
-      dropPiece()
-    }else{
-      startGame()
-    }
-  }
-
   fasterDrop = function(){
     tetris.deactivateTilesFor(currentPiece)
     currentPiece.downOne()
     tetris.activateTilesFor(currentPiece)
     renderBoard()
-  }
-
-  startGame = function(){
-    initPiece()
-    dropPiece()
   }
 
   moveLeft = function(){
