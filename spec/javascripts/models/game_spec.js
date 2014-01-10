@@ -97,6 +97,15 @@ describe("TetrisBoard", function(){
           tetris.activateTilesFor(newTPiece)
           expect(newTPiece.frozen).toBe(false)
         })
+
+        it("should not leftFreeze active tiles as part of its shape", function(){
+          newTPiece = new Piece(TETROMINOES.T)
+          newTPiece.rotate()
+          tetris.activateTilesFor(newTPiece)
+          newTPiece.rotate()
+          tetris.activateTilesFor(newTPiece)
+          expect(newTPiece.leftFrozen).toBe(false)
+        })
       })
     })
   })
