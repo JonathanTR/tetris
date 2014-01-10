@@ -17,6 +17,13 @@ Array.prototype.rotate = function(){
   this.push(front)
 }
 
+Array.prototype.containsCoords = function(coords){
+  for(var i = 0; i < this.length; i++){
+    if(this[i][0] == coords[0] && this[i][1] == coords[1] ){ return(true) }
+  }
+  return(false)
+}
+
 // TILES
 Tile = function(){
   this.active = false; 
@@ -94,7 +101,7 @@ Game.prototype.activateTilesFor = function(piece){
   for(var tile = 0; tile < length; tile++){
     var row = piece.position[tile][0]
     var col = piece.position[tile][1]
-    if(row + 1 >= board.length || board[row + 1][col].active){
+    if(row + 1 >= board.length || board[row + 1][col].active && !piece.position.containsCoords([row +1, col])){
       piece.freeze()
     }
     if(col - 1 < 0){
