@@ -1,3 +1,9 @@
+// Helpers
+Piece.prototype.capturePosition = function() {
+  return JSON.parse(JSON.stringify(this.position))
+}
+//
+
 beforeEach(function(){
   tetris = new Game()
 })
