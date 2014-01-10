@@ -81,7 +81,7 @@ Piece.prototype.rotate = function(){
   var nextRotation = this.pattern.positions[1]
   var length = nextRotation.length
   for(var coords = 0; coords < length; coords++){
-    if(nextRotation[coords][1] < 0){
+    if(nextRotation[coords][1] < 0 || nextRotation[coords][1] > 9){
       return
     }
   }

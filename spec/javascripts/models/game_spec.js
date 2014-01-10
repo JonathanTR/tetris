@@ -155,6 +155,16 @@ describe("TetrisBoard", function(){
           testPiece.rotate()
           expect(testPiece.position).toEqual(control)
         })
+
+        it("should not allow a piece to rotate over the right side", function(){
+          testPiece.rotate()
+          for(var col = 0; col < 4; col++){
+            testPiece.rightOne()
+          }
+          control = testPiece.capturePosition()
+          testPiece.rotate()
+          expect(testPiece.position).toEqual(control)
+        })
       })
     })
   })
