@@ -115,6 +115,18 @@ describe("TetrisBoard", function(){
           tetris.activateTilesFor(newTPiece)
           expect(newTPiece.rightFrozen).toBe(false)
         })
+
+        it("should not be leftFrozen unless it is directly next to a wall or active tile", function(){
+          for(var col = 0; col < 3; col++){
+            testPiece.leftOne()
+          }
+          tetris.activateTilesFor(testPiece)
+          expect(testPiece.leftFrozen).toBe(true)
+          tetris.deactivateTilesFor(testPiece)
+          testPiece.rightOne()
+          tetris.activateTilesFor(testPiece)
+          expect(testPiece.leftFrozen).toBe(false)
+        })
       })
     })
   })

@@ -96,6 +96,7 @@ Game = function(){
   this.board = boardMaker(20, 10)
 }
 Game.prototype.activateTilesFor = function(piece){
+  piece.leftFrozen = false
   var board = this.board
   var length = piece.position.length
   for(var tile = 0; tile < length; tile++){
