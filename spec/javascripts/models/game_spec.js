@@ -63,5 +63,12 @@ describe("TetrisBoard", function(){
       tetris.activateTilesFor(testPiece)
       expect(testPiece.rightFrozen).toBe(true)
     })
+
+    it("should freeze a piece if it lands on another", function(){
+      tetris.board[3][3].activate()
+      testPiece.downOne()
+      tetris.activateTilesFor(testPiece)
+      expect(testPiece.frozen).toBe(true)
+    })
   })
 })

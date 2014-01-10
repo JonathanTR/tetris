@@ -94,7 +94,7 @@ Game.prototype.activateTilesFor = function(piece){
   for(var tile = 0; tile < length; tile++){
     var row = piece.position[tile][0]
     var col = piece.position[tile][1]
-    if(row + 1 >= board.length){
+    if(row + 1 >= board.length || board[row + 1][col].active){
       piece.freeze()
     }
     if(col - 1 < 0){
