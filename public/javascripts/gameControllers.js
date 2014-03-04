@@ -3,6 +3,5 @@ var GameController = {
   loadEmptyBoard: function(){
     var board = this.tetris.board
     GameViews.render(board, 'tetrisBoard')
-    console.log('loaded')
   }
 }
