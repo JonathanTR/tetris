@@ -80,3 +80,28 @@ h2.title {
 .active {
   background-color: #e74c3c;
 }
+
+#controls {
+  display: block;
+  width: 9em;
+  margin: 1em auto;
+}
+
+button {
+  margin: 4px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+
+#start {
+  background-color: #2ecc71; 
+  border: 1px solid #2bbe68;
+  border-bottom: 4px solid #2bbe68;
+}
+#pause {
+  background-color: #e74c3c;
+  border: 1px solid #c0392b;
+  border-bottom: 4px solid #c0392b;
+}
+
