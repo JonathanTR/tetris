@@ -1,18 +1,20 @@
 describe("Game Controller", function(){
+  var tetris, board
 
-  describe("LoadEmptyBoard", function(){
-    var tetris, board
+  beforeEach(function(){
+    tetris = new Game()
+    board = tetris.board
+    tetrisController = new GameController()
+  })
 
-    beforeEach(function(){
-      tetris = new Game()
-      board = tetris.board
-    })
+  describe("loadEmptyBoard", function(){
 
     it("should load an empty board", function(){
       spyOn(GameViews, "render")
-      GameController.loadEmptyBoard();
+      tetrisController.loadEmptyBoard();
       expect(GameViews.render).toHaveBeenCalledWith(board, "tetrisBoard")
     })
+
   })
 
 })
