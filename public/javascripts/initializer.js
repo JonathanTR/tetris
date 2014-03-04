@@ -1,3 +1,4 @@
 window.onload = function(){
-  GameController.loadEmptyBoard()
+  var tetrisController = new GameController
+  tetrisController.loadEmptyBoard()
 }

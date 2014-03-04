@@ -1,7 +1,8 @@
-var GameController = {
-  tetris: new Game(),
-  loadEmptyBoard: function(){
-    var board = this.tetris.board
-    GameViews.render(board, 'tetrisBoard')
-  }
+var GameController = function(){
+  this.tetris = new Game(),
+  this.board = this.tetris.board
+}
+
+GameController.prototype.loadEmptyBoard = function(){
+  GameViews.render(this.board, 'tetrisBoard')
 }
