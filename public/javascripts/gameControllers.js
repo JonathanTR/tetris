@@ -21,9 +21,22 @@ GameController.prototype.attachButtonHandlers = function(){
   })
 }
 
+GameController.prototype.attachKeyHandlers = function(){
+  var _this = this
+  document.addEventListener("keydown", function(e){
+    if(e.keyCode == 37){
+      _this.moveLeft()
+    }
+    if(e.keyCode == 39){
+      _this.moveRight()
+    }
+  })
+}
+
 GameController.prototype.initialize = function(){
   this.renderBoard()
   this.attachButtonHandlers()
+  this.attachKeyHandlers()
 }
 
 GameController.prototype.createPiece = function(pattern){
