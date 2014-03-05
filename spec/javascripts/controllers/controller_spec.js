@@ -45,7 +45,7 @@ describe("Game Controller", function(){
     })
   })
 
-  describe("activatePiece", function(){
+  describe("createPiece", function(){
 
     it("should create and activate a new piece", function(){
       spyOn(GameViews, "render")
