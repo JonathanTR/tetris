@@ -57,9 +57,9 @@ describe("Game Controller", function(){
       expect(GameViews.render).toHaveBeenCalled()
     })
 
-    it("drop should drop the currentPiece", function(){
+    it("moveDown should drop the currentPiece", function(){
       spyOn(currentPiece, "downOne")
-      tetrisController.drop()
+      tetrisController.moveDown()
       expect(tetrisController.tetris.deactivateTilesFor).toHaveBeenCalled()
       expect(currentPiece.downOne).toHaveBeenCalled()
       expect(tetrisController.tetris.activateTilesFor).toHaveBeenCalled()

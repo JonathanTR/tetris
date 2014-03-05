@@ -32,7 +32,7 @@ GameController.prototype.createPiece = function(pattern){
   this.renderBoard()
 }
 
-GameController.prototype.drop = function(){
+GameController.prototype.moveDown = function(){
   this.tetris.deactivateTilesFor(this.currentPiece)
   this.currentPiece.downOne()
   this.tetris.activateTilesFor(this.currentPiece)
@@ -42,6 +42,6 @@ GameController.prototype.drop = function(){
 GameController.prototype.dropping = function(){
   var _this = this
   setInterval(function(){
-    _this.drop()
+    _this.moveDown()
   }, 500)
 }
