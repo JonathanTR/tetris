@@ -1,6 +1,7 @@
 var GameController = function(){
   this.tetris = new Game(),
   this.board = this.tetris.board
+  this.currentPiece
 }
 
 GameController.prototype.loadEmptyBoard = function(){
