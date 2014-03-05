@@ -14,7 +14,10 @@ GameController.prototype.runGame = function(){
 
 GameController.prototype.attachButtonHandlers = function(){
   var startButton = document.getElementById('start')
-  startButton.addEventListener("click", this.runGame)
+  var _this = this
+  startButton.addEventListener("click", function(){
+    _this.runGame()
+  })
 }
 
 GameController.prototype.initialize = function(){
