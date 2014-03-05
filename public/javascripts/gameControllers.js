@@ -4,7 +4,7 @@ var GameController = function(){
   this.currentPiece
 }
 
-GameController.prototype.loadEmptyBoard = function(){
+GameController.prototype.renderBoard = function(){
   GameViews.render(this.board, 'tetrisBoard')
 }
 
@@ -18,6 +18,6 @@ GameController.prototype.attachButtonHandlers = function(){
 }
 
 GameController.prototype.initialize = function(){
-  this.loadEmptyBoard()
+  this.renderBoard()
   this.attachButtonHandlers()
 }
