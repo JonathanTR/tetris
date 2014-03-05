@@ -9,7 +9,7 @@ GameController.prototype.renderBoard = function(){
 }
 
 GameController.prototype.runGame = function(){
-  console.log("game started")
+  this.createPiece(randomTetromino())
 }
 
 GameController.prototype.attachButtonHandlers = function(){
