@@ -13,17 +13,14 @@ describe("Game Controller", function(){
   })
 
   describe("renderBoard", function(){
-
     it("should load an empty board", function(){
       spyOn(GameViews, "render")
       tetrisController.renderBoard()
       expect(GameViews.render).toHaveBeenCalledWith(board, "tetrisBoard")
     })
-
   })
 
   describe("initialize", function(){
-
     beforeEach(function(){
       $('body').append("<button id='start'></button>")
     })
