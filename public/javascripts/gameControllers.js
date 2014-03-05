@@ -27,5 +27,6 @@ GameController.prototype.initialize = function(){
 
 GameController.prototype.createPiece = function(pattern){
   this.currentPiece = new Piece(pattern)
+  this.tetris.activateTilesFor(this.currentPiece)
   this.renderBoard()
 }
