@@ -42,12 +42,15 @@ describe("Game Controller", function(){
     })
   })
 
-  describe("createPiece", function(){
-
-    it("should create and activate a new piece", function(){
+  describe("Piece movement:", function(){
+    beforeEach(function(){
       spyOn(GameViews, "render")
       spyOn(tetrisController.tetris, "activateTilesFor")
       tetrisController.createPiece(TETROMINOES.I)
+      currentPiece = tetrisController.currentPiece
+    })
+
+    it("createPiece should create and activate a new piece", function(){
       expect(tetrisController.currentPiece).toEqual(new Piece(TETROMINOES.I))
       expect(tetrisController.tetris.activateTilesFor).toHaveBeenCalled()
       expect(GameViews.render).toHaveBeenCalled()
