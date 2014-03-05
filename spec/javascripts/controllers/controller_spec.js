@@ -65,6 +65,24 @@ describe("Game Controller", function(){
       expect(tetrisController.tetris.activateTilesFor).toHaveBeenCalled()
       expect(GameViews.render).toHaveBeenCalled()
     })
+
+    it("moveLeft should move the piece left one", function(){
+      spyOn(currentPiece, "leftOne")
+      tetrisController.moveLeft()
+      expect(tetrisController.tetris.deactivateTilesFor).toHaveBeenCalled()
+      expect(currentPiece.leftOne).toHaveBeenCalled()
+      expect(tetrisController.tetris.activateTilesFor).toHaveBeenCalled()
+      expect(GameViews.render).toHaveBeenCalled()
+    })
+
+    it("moveRight should move the piece right one", function(){
+      spyOn(currentPiece, "rightOne")
+      tetrisController.moveRight()
+      expect(tetrisController.tetris.deactivateTilesFor).toHaveBeenCalled()
+      expect(currentPiece.rightOne).toHaveBeenCalled()
+      expect(tetrisController.tetris.activateTilesFor).toHaveBeenCalled()
+      expect(GameViews.render).toHaveBeenCalled()
+    })
   })
 
   describe("runGame", function(){

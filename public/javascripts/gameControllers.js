@@ -39,6 +39,20 @@ GameController.prototype.moveDown = function(){
   this.renderBoard()
 }
 
+GameController.prototype.moveLeft = function(){
+  this.tetris.deactivateTilesFor(this.currentPiece)
+  this.currentPiece.leftOne()
+  this.tetris.activateTilesFor(this.currentPiece)
+  this.renderBoard()
+}
+
+GameController.prototype.moveRight = function(){
+  this.tetris.deactivateTilesFor(this.currentPiece)
+  this.currentPiece.rightOne()
+  this.tetris.activateTilesFor(this.currentPiece)
+  this.renderBoard()
+}
+
 GameController.prototype.dropping = function(){
   var _this = this
   setInterval(function(){
