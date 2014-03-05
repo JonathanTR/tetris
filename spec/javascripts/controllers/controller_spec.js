@@ -58,4 +58,12 @@ describe("Game Controller", function(){
 
   })
 
+  describe("runGame", function(){
+    it("should call createPiece", function(){
+      spyOn(tetrisController, "createPiece")
+      tetrisController.runGame()
+      expect(tetrisController.createPiece).toHaveBeenCalled()
+    })
+  })
+
 })
