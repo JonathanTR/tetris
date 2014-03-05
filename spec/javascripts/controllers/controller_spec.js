@@ -46,6 +46,7 @@ describe("Game Controller", function(){
     beforeEach(function(){
       spyOn(GameViews, "render")
       spyOn(tetrisController.tetris, "activateTilesFor")
+      spyOn(tetrisController.tetris, "deactivateTilesFor")
       tetrisController.createPiece(TETROMINOES.I)
       currentPiece = tetrisController.currentPiece
     })
@@ -56,6 +57,14 @@ describe("Game Controller", function(){
       expect(GameViews.render).toHaveBeenCalled()
     })
 
+    it("drop should drop the currentPiece", function(){
+      spyOn(currentPiece, "downOne")
+      tetrisController.drop()
+      expect(tetrisController.tetris.deactivateTilesFor).toHaveBeenCalled()
+      expect(currentPiece.downOne).toHaveBeenCalled()
+      expect(tetrisController.tetris.activateTilesFor).toHaveBeenCalled()
+      expect(GameViews.render).toHaveBeenCalled()
+    })
   })
 
   describe("runGame", function(){
