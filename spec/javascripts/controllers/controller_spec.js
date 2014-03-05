@@ -5,6 +5,11 @@ describe("Game Controller", function(){
     tetris = new Game()
     board = tetris.board
     tetrisController = new GameController()
+    $('body').append("<div id='tetrisBoard'></div>")
+  })
+
+  afterEach(function(){
+    $("#tetrisBoard").remove()
   })
 
   describe("loadEmptyBoard", function(){
