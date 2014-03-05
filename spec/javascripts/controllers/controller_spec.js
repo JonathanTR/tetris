@@ -88,6 +88,8 @@ describe("Game Controller", function(){
   describe("runGame", function(){
     beforeEach(function(){
       jasmine.clock().install()
+      tetrisController.createPiece(TETROMINOES.I)
+      currentPiece = tetrisController.currentPiece
     })
 
     afterEach(function(){
@@ -101,8 +103,6 @@ describe("Game Controller", function(){
     })
 
     it("dropping should keep dropping the currentPiece", function(){
-      tetrisController.createPiece(TETROMINOES.I)
-      currentPiece = tetrisController.currentPiece
       expect(currentPiece.frozen).toBe(false)
       tetrisController.dropping()
       // The board length may need to be extended to 22 rows to form a two row "skirt"
