@@ -30,6 +30,12 @@ GameController.prototype.attachKeyHandlers = function(){
     if(e.keyCode == 39){
       _this.moveRight()
     }
+    if(e.keyCode == 40){
+      _this.moveDown()
+    }
+    if(e.keyCode == 38){
+      _this.rotate()
+    }
   })
 }
 
@@ -62,6 +68,13 @@ GameController.prototype.moveLeft = function(){
 GameController.prototype.moveRight = function(){
   this.tetris.deactivateTilesFor(this.currentPiece)
   this.currentPiece.rightOne()
+  this.tetris.activateTilesFor(this.currentPiece)
+  this.renderBoard()
+}
+
+GameController.prototype.rotate = function(){
+  this.tetris.deactivateTilesFor(this.currentPiece)
+  this.currentPiece.rotate()
   this.tetris.activateTilesFor(this.currentPiece)
   this.renderBoard()
 }

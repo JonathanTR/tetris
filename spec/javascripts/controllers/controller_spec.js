@@ -83,6 +83,15 @@ describe("Game Controller", function(){
       expect(tetrisController.tetris.activateTilesFor).toHaveBeenCalled()
       expect(GameViews.render).toHaveBeenCalled()
     })
+
+    it("rotate should rotate the piece", function(){
+      spyOn(currentPiece, "rotate")
+      tetrisController.rotate()
+      expect(tetrisController.tetris.deactivateTilesFor).toHaveBeenCalled()
+      expect(currentPiece.rotate).toHaveBeenCalled()
+      expect(tetrisController.tetris.activateTilesFor).toHaveBeenCalled()
+      expect(GameViews.render).toHaveBeenCalled()
+    })
   })
 
   describe("runGame", function(){
