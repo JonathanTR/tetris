@@ -10,6 +10,7 @@ GameController.prototype.renderBoard = function(){
 
 GameController.prototype.runGame = function(){
   this.createPiece(randomTetromino())
+  this.dropping()
 }
 
 GameController.prototype.attachButtonHandlers = function(){
