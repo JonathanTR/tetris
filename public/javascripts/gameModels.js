@@ -36,6 +36,13 @@ Tile.prototype.deactivate = function(){
 }
 
 // PIECE
+var pieceFrozen = new CustomEvent(
+  "pieceFrozen", {
+    bubbles: true,
+    cancelable: true
+  }
+);
+
 Piece = function(tetrominoPattern){
   this.origin = [0, 4]
   this.pattern = JSON.parse(JSON.stringify(tetrominoPattern))
@@ -90,6 +97,7 @@ Piece.prototype.rotate = function(){
 }
 Piece.prototype.freeze = function(){
   this.frozen = true
+  document.dispatchEvent(pieceFrozen)
 }
 Piece.prototype.leftFreeze = function(){
   this.leftFrozen = true

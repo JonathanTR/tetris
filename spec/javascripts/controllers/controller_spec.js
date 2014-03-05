@@ -110,6 +110,16 @@ describe("Game Controller", function(){
       jasmine.clock().tick(ticks * 500)
       expect(currentPiece.frozen).toBe(true)
     })
+
+    it("dispatches a custom event when a piece is frozen", function(){
+      frozenEvent = spyOnEvent(document, "pieceFrozen")
+      expect(currentPiece.frozen).toBe(false)
+      tetrisController.dropping()
+      ticks = (board.length - 2)
+      jasmine.clock().tick(ticks * 500)
+      expect(currentPiece.frozen).toBe(true)
+      expect(frozenEvent).toHaveBeenTriggered()
+    })
   })
 
 })
