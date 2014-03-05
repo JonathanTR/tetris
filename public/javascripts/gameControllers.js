@@ -21,3 +21,8 @@ GameController.prototype.initialize = function(){
   this.renderBoard()
   this.attachButtonHandlers()
 }
+
+GameController.prototype.createPiece = function(pattern){
+  this.currentPiece = new Piece(pattern)
+  this.renderBoard()
+}

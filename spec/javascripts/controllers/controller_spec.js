@@ -41,8 +41,19 @@ describe("Game Controller", function(){
     it("should attach button handlers", function(){
       spyOn(tetrisController, "attachButtonHandlers")
       tetrisController.initialize()
-      expect(tetrisController.attachButtonHandlers).toHaveBeenCalled
+      expect(tetrisController.attachButtonHandlers).toHaveBeenCalled()
     })
+  })
+
+  describe("activatePiece", function(){
+
+    it("should create and activate a new piece", function(){
+      spyOn(GameViews, "render")
+      tetrisController.createPiece(TETROMINOES.I)
+      expect(tetrisController.currentPiece).toEqual(new Piece(TETROMINOES.I))
+      expect(GameViews.render).toHaveBeenCalled()
+    })
+
   })
 
 })
