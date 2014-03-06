@@ -23,6 +23,10 @@ describe("Game Controller", function(){
   describe("initialize", function(){
     beforeEach(function(){
       $('body').append("<button id='start'></button>")
+      spyOn(tetrisController, "attachPieceFrozenListener")
+      spyOn(tetrisController, "renderBoard")
+      spyOn(tetrisController, "attachButtonHandlers")
+      tetrisController.initialize()
     })
 
     afterEach(function(){
@@ -30,15 +34,15 @@ describe("Game Controller", function(){
     })
 
     it("should run renderBoard", function(){
-      spyOn(tetrisController, "renderBoard")
-      tetrisController.initialize()
       expect(tetrisController.renderBoard).toHaveBeenCalled()
     })
 
     it("should attach button handlers", function(){
-      spyOn(tetrisController, "attachButtonHandlers")
-      tetrisController.initialize()
       expect(tetrisController.attachButtonHandlers).toHaveBeenCalled()
+    })
+
+    it("should attachPieceFrozenListener", function(){
+      expect(tetrisController.attachPieceFrozenListener).toHaveBeenCalled()
     })
   })
 
