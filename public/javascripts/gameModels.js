@@ -96,8 +96,10 @@ Piece.prototype.rotate = function(){
   this.position = this.pattern.positions[0]
 }
 Piece.prototype.freeze = function(){
-  this.frozen = true
-  document.dispatchEvent(pieceFrozen)
+  if(this.frozen == false){
+    this.frozen = true
+    document.dispatchEvent(pieceFrozen)
+  }
 }
 Piece.prototype.leftFreeze = function(){
   this.leftFrozen = true
