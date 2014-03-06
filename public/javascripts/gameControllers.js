@@ -39,10 +39,18 @@ GameController.prototype.attachKeyHandlers = function(){
   })
 }
 
+GameController.prototype.attachPieceFrozenListener = function(){
+  var _this = this
+  document.addEventListener("pieceFrozen", function(){
+    _this.createPiece(randomTetromino())
+  })
+}
+
 GameController.prototype.initialize = function(){
   this.renderBoard()
   this.attachButtonHandlers()
   this.attachKeyHandlers()
+  this.attachPieceFrozenListener()
 }
 
 GameController.prototype.createPiece = function(pattern){
