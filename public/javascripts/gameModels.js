@@ -144,3 +144,22 @@ Game.prototype.deactivateTilesFor = function(piece){
     board[row][col].deactivate()
   }
 }
+Game.prototype.clearFilledRows = function(){
+  var board = this.board
+  for(var row = 0; row < board.length; row++){
+    var filled = 0
+    for(var tile = 0; tile < 10; tile++){
+      if(board[row][tile].active){
+        filled += 1
+      }
+    }
+    if(filled == 10){
+      board.splice(row, 1)
+        var newRow = []
+        for(var i = 0; i < 10; i++){
+          newRow.push(new Tile());
+        }
+      board.unshift(newRow)
+    }
+  }
+}

@@ -29,6 +29,16 @@ describe("TetrisBoard", function(){
       testPiece = new Piece(TETROMINOES.I);
     })
 
+    it("can remove a row of tiles", function(){
+      var b = tetris.board.length - 1 // should return y value for bottom of the board
+      var fillBottom = new Piece({positions:[[[b,0],[b,1],[b,2],[b,3],[b,4],[b,5],[b,6],[b,7],[b,8],[b,9]]]})
+      tetris.activateTilesFor(fillBottom)
+      tetris.clearFilledRows()
+      expect(tetris.board[b][0].active).toEqual(false)
+      expect(tetris.board[b][5].active).toEqual(false)
+      expect(tetris.board[b][9].active).toEqual(false)
+    })
+
     describe("tile activation", function(){
       it("can activate tiles, given a piece", function(){
         tetris.activateTilesFor(testPiece);
