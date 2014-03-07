@@ -17,7 +17,7 @@ var GameViews = {
         if(!modeltile.active){
           tile.setAttribute('class', 'tile')
         }else{
-          tile.setAttribute('class', 'tile active')
+          tile.setAttribute('class', 'tile active ' + modeltile.hue)
         }
         row.appendChild(tile)
       }
