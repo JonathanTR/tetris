@@ -11,6 +11,8 @@
 #   - dist/**/*.js
 #
 src_files:
+  - vendor/jquery-2.1.0.min.js
+  - vendor/jasmine-jquery.js
   - public/javascripts/tetrominoes.js
   - public/javascripts/gameModels.js
   - public/javascripts/gameViews.js

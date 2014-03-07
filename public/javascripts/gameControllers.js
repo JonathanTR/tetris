@@ -1,158 +1,98 @@
-run = function(){
-  var tetris = new Game()
-  var board = tetris.board
-  var currentPiece
-  
-  // Start the game
-  renderBoard = function(){
-    render(tetris.board, 'tetrisBoard')
-  }
-  initPiece = function(){
-    currentPiece = new Piece(randomTetromino())
-    tetris.activateTilesFor(currentPiece)
-    renderBoard()
-  }
+var GameController = function(){
+  this.tetris = new Game(),
+  this.board = this.tetris.board
+  this.currentPiece
+}
 
-  startGame = function(){
-    initPiece()
-    dropPiece()
-  }
+GameController.prototype.renderBoard = function(){
+  GameViews.render(this.board, 'tetrisBoard')
+}
 
-  play = function(){
-    if(typeof(currentPiece) != "undefined"){
-      dropPiece()
-    }else{
-      startGame()
+GameController.prototype.runGame = function(){
+  this.createPiece(randomTetromino())
+  this.dropping()
+}
+
+GameController.prototype.attachButtonHandlers = function(){
+  var startButton = document.getElementById('start')
+  var _this = this
+  startButton.addEventListener("click", function(){
+    _this.runGame()
+  })
+}
+
+GameController.prototype.attachKeyHandlers = function(){
+  var _this = this
+  document.addEventListener("keydown", function(e){
+    if(e.keyCode == 37){
+      _this.moveLeft()
     }
-  }
-
-
-  // Stop the game
-  deactivateBoard = function(){
-    for(var row = 0; row < board.length; row++){
-      for(var tile = 0; tile < board[row].length; tile++){
-        board[row][tile].deactivate()
-      }
+    if(e.keyCode == 39){
+      _this.moveRight()
     }
-    renderBoard()
-  }
-
-  stopGame = function(){
-    pause()
-    currentPiece = undefined
-  }
-
-  gameHasBeenLost = function(){
-    for(var coords = 0; coords < currentPiece.position.length; coords++){
-      if(currentPiece.frozen && currentPiece.position[coords][0] <= 0){
-        return true
-      }else{
-        return false
-      }
+    if(e.keyCode == 40){
+      _this.moveDown()
     }
-  }
-
-  pause = function(){
-    if(typeof(gameTime) != "undefined"){ 
-      clearInterval(gameTime)
-    }
-  }
-
-  // During the game
-  boardSweep = function(){
-    for(var row = 0; row < board.length; row++){
-      var activeTiles = 0
-      for(var tile = 0; tile < board[row].length; tile++){
-        if(board[row][tile].active){
-          activeTiles++
-        }
-      }
-      // If a row is full, clear it out
-      if(activeTiles == 10){
-        board.splice(row, 1)
-        var newRow = []
-        for(var i = 0; i < 10; i++){
-          newRow.push(new Tile());
-        }
-        board.unshift(newRow)
-      }
-      if(gameHasBeenLost()){
-        pause()
-        console.log('You lose')
-      }
-    }
-  }
-  
-  dropPiece = function(){
-    if(typeof(gameTime) != "undefined"){ 
-      clearInterval(gameTime)
-    }
-    gameTime = setInterval(function(){
-      boardSweep()
-      tetris.deactivateTilesFor(currentPiece)
-      currentPiece.downOne()
-      tetris.activateTilesFor(currentPiece)
-      renderBoard()
-    }, 500)
-  }
-
-  fasterDrop = function(){
-    tetris.deactivateTilesFor(currentPiece)
-    currentPiece.downOne()
-    tetris.activateTilesFor(currentPiece)
-    renderBoard()
-  }
-
-  moveLeft = function(){
-    clearInterval(gameTime)
-    tetris.deactivateTilesFor(currentPiece)
-    currentPiece.leftOne()
-    tetris.activateTilesFor(currentPiece)
-    renderBoard()
-    dropPiece()
-  }
-  moveRight = function(){
-    clearInterval(gameTime)
-    tetris.deactivateTilesFor(currentPiece)
-    currentPiece.rightOne()
-    tetris.activateTilesFor(currentPiece)
-    renderBoard()
-    dropPiece()
-  }
-  moveRotate = function(){
-    clearInterval(gameTime)
-    tetris.deactivateTilesFor(currentPiece)
-    currentPiece.rotate()
-    tetris.activateTilesFor(currentPiece)
-    renderBoard()
-    dropPiece()
-  }
-
-  renderBoard()
-
-  document.addEventListener("pieceFrozen", startGame, false);
-  document.getElementById('start').addEventListener("click", play, false);
-  document.getElementById('pause').addEventListener("click", pause, false);
-  document.addEventListener("keydown", function(event){
-    switch(event.keyCode){
-      case 37:
-        moveLeft()
-        break
-      case 39:
-        moveRight()
-        break
-      case 38:
-        // Up
-        moveRotate()
-        break
-      case 40:
-        // Down
-        fasterDrop()
-        break
+    if(e.keyCode == 38){
+      _this.rotate()
     }
   })
 }
 
-window.onload = function(){
-  run()
+GameController.prototype.attachPieceFrozenListener = function(){
+  var _this = this
+  document.addEventListener("pieceFrozen", function(){
+    setTimeout(function(){
+      _this.createPiece(randomTetromino())
+    }, 300)
+  })
+}
+
+GameController.prototype.initialize = function(){
+  this.renderBoard()
+  this.attachButtonHandlers()
+  this.attachKeyHandlers()
+  this.attachPieceFrozenListener()
+}
+
+GameController.prototype.createPiece = function(pattern){
+  this.tetris.clearFilledRows()
+  this.currentPiece = new Piece(pattern)
+  this.tetris.activateTilesFor(this.currentPiece)
+  this.renderBoard()
+}
+
+GameController.prototype.moveDown = function(){
+  this.tetris.deactivateTilesFor(this.currentPiece)
+  this.currentPiece.downOne()
+  this.tetris.activateTilesFor(this.currentPiece)
+  this.renderBoard()
+}
+
+GameController.prototype.moveLeft = function(){
+  this.tetris.deactivateTilesFor(this.currentPiece)
+  this.currentPiece.leftOne()
+  this.tetris.activateTilesFor(this.currentPiece)
+  this.renderBoard()
+}
+
+GameController.prototype.moveRight = function(){
+  this.tetris.deactivateTilesFor(this.currentPiece)
+  this.currentPiece.rightOne()
+  this.tetris.activateTilesFor(this.currentPiece)
+  this.renderBoard()
+}
+
+GameController.prototype.rotate = function(){
+  this.tetris.deactivateTilesFor(this.currentPiece)
+  this.currentPiece.rotate()
+  this.tetris.activateTilesFor(this.currentPiece)
+  this.renderBoard()
+}
+
+GameController.prototype.dropping = function(){
+  var _this = this
+  setInterval(function(){
+    _this.moveDown()
+  }, 500)
 }

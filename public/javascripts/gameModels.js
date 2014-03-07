@@ -67,7 +67,7 @@ Piece.prototype.downOne = function(){
   }
 }
 Piece.prototype.leftOne = function(){
-  if(!this.frozen && !this.leftFrozen){
+  if(!this.leftFrozen){
     var outerLength = this.pattern.positions.length
     var innerLength = this.pattern.positions[0].length
     for(var rotation = 0; rotation < outerLength; rotation++){
@@ -78,7 +78,7 @@ Piece.prototype.leftOne = function(){
   }
 }
 Piece.prototype.rightOne = function(){
-  if(!this.frozen && !this.rightFrozen){
+  if(!this.rightFrozen){
     var outerLength = this.pattern.positions.length
     var innerLength = this.pattern.positions[0].length
     for(var rotation = 0; rotation < outerLength; rotation++){
@@ -100,7 +100,7 @@ Piece.prototype.rotate = function(){
   this.position = this.pattern.positions[0]
 }
 Piece.prototype.freeze = function(){
-  if(!this.frozen){
+  if(this.frozen == false){
     this.frozen = true
     document.dispatchEvent(pieceFrozen)
   }
@@ -146,5 +146,24 @@ Game.prototype.deactivateTilesFor = function(piece){
     var row = piece.position[tile][0]
     var col = piece.position[tile][1]
     board[row][col].deactivate()
+  }
+}
+Game.prototype.clearFilledRows = function(){
+  var board = this.board
+  for(var row = 0; row < board.length; row++){
+    var filled = 0
+    for(var tile = 0; tile < 10; tile++){
+      if(board[row][tile].active){
+        filled += 1
+      }
+    }
+    if(filled == 10){
+      board.splice(row, 1)
+        var newRow = []
+        for(var i = 0; i < 10; i++){
+          newRow.push(new Tile());
+        }
+      board.unshift(newRow)
+    }
   }
 }
