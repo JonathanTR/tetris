@@ -44,7 +44,7 @@ GameController.prototype.attachPieceFrozenListener = function(){
   document.addEventListener("pieceFrozen", function(){
     setTimeout(function(){
       _this.createPiece(randomTetromino())
-    }, 500)
+    }, 300)
   })
 }
 
