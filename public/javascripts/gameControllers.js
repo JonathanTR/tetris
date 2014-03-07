@@ -8,16 +8,23 @@ GameController.prototype.renderBoard = function(){
   GameViews.render(this.board, 'tetrisBoard')
 }
 
-GameController.prototype.runGame = function(){
-  this.createPiece(randomTetromino())
-  this.dropping()
+GameController.prototype.pause = function(){
+  clearInterval(gameTime)
+  gameTime = undefined
 }
 
 GameController.prototype.attachButtonHandlers = function(){
   var startButton = document.getElementById('start')
+  var pauseButton = document.getElementById('pause')
   var _this = this
   startButton.addEventListener("click", function(){
-    _this.runGame()
+    if(typeof _this.currentPiece === 'undefined'){
+      _this.createPiece(randomTetromino())
+    }
+    _this.dropping()
+  })
+  pauseButton.addEventListener("click", function(){
+    _this.pause()
   })
 }
 
@@ -92,7 +99,7 @@ GameController.prototype.rotate = function(){
 
 GameController.prototype.dropping = function(){
   var _this = this
-  setInterval(function(){
+  gameTime = setInterval(function(){
     _this.moveDown()
   }, 500)
 }

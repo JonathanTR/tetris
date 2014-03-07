@@ -98,7 +98,7 @@ describe("Game Controller", function(){
     })
   })
 
-  describe("runGame", function(){
+  describe("Gameplay:", function(){
     beforeEach(function(){
       jasmine.clock().install()
       tetrisController.createPiece(TETROMINOES.I)
@@ -107,12 +107,6 @@ describe("Game Controller", function(){
 
     afterEach(function(){
       jasmine.clock().uninstall()
-    })
-
-    it("should call createPiece", function(){
-      spyOn(tetrisController, "createPiece")
-      tetrisController.runGame()
-      expect(tetrisController.createPiece).toHaveBeenCalled()
     })
 
     it("dropping should keep dropping the currentPiece", function(){
