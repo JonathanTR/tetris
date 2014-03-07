@@ -63,7 +63,7 @@ Piece.prototype.downOne = function(){
   }
 }
 Piece.prototype.leftOne = function(){
-  if(!this.frozen && !this.leftFrozen){
+  if(!this.leftFrozen){
     var outerLength = this.pattern.positions.length
     var innerLength = this.pattern.positions[0].length
     for(var rotation = 0; rotation < outerLength; rotation++){
@@ -74,7 +74,7 @@ Piece.prototype.leftOne = function(){
   }
 }
 Piece.prototype.rightOne = function(){
-  if(!this.frozen && !this.rightFrozen){
+  if(!this.rightFrozen){
     var outerLength = this.pattern.positions.length
     var innerLength = this.pattern.positions[0].length
     for(var rotation = 0; rotation < outerLength; rotation++){
